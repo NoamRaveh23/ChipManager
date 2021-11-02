@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/tableback">
+
+    <Button
+        android:id="@+id/newGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" New Game"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <Button
+        android:id="@+id/ConGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Continue Game"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <Button
+        android:id="@+id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Options"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <Button
+        android:id="@+id/stat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" statistics"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <Button
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Profile"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_blue_light"/>
+
+    
+    
+</LinearLayout>

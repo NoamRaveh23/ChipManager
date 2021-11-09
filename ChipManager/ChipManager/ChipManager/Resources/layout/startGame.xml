@@ -12,18 +12,22 @@
         android:layout_height="wrap_content"
         android:text="ADD NEW PLAYER"
         android:gravity="center"
-        android:textSize="70px"/>
+        android:textSize="70px"
+        android:typeface="serif"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="NAME"
-        android:layout_margin="30dp"/>
+        android:layout_margin="30dp"
+        android:typeface="serif"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="MONEY"
-        android:layout_margin="30dp"/>
+        android:layout_margin="30dp"
+        android:typeface="serif"/>
+
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,12 +38,14 @@
             android:layout_height="wrap_content"
             android:text="male"
             android:onClick="onRadioButtonClicked"
+            android:typeface="serif"
             />
         <RadioButton android:id="@+id/radio_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="female"
             android:onClick="onRadioButtonClicked"
+            android:typeface="serif"
             />
     </RadioGroup>
 
@@ -49,6 +55,7 @@
         android:text="save and add another player"
         android:background="@android:color/holo_blue_light"
         android:layout_margin="30dp"
+        android:typeface="serif"
         />
 
     <Button
@@ -57,6 +64,7 @@
         android:text="save and start playing"
         android:background="@android:color/holo_blue_light"
         android:layout_margin="30dp"
+        android:typeface="serif"
         />
 
 </LinearLayout> 

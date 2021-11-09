@@ -29,6 +29,7 @@
                 android:textSize="40px"
                 android:layout_marginLeft="20dp"
                 android:textColor="@android:color/black"
+                android:typeface="serif"
             />
 
             <TextView
@@ -39,6 +40,7 @@
                 android:textSize="40px"
                 android:layout_marginLeft="20dp"
                 android:textColor="@android:color/black"
+                android:typeface="serif"
             />
 
             <TextView
@@ -49,6 +51,7 @@
                 android:layout_marginLeft="20dp"
                 android:textSize="40px"
                 android:textColor="@android:color/black"
+                android:typeface="serif"
             />
 
         </LinearLayout>

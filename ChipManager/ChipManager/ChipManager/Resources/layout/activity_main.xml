@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text=" New Game"
         android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@android:color/holo_blue_light"
+        android:typeface="serif"/>
 
     <Button
         android:id="@+id/ConGame"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text=" Continue Game"
         android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@android:color/holo_blue_light"
+        android:typeface="serif"/>
 
     <Button
         android:id="@+id/options"
@@ -30,7 +32,8 @@
         android:layout_height="wrap_content"
         android:text=" Options"
         android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@android:color/holo_blue_light"
+        android:typeface="serif"/>
 
     <Button
         android:id="@+id/stat"
@@ -38,7 +41,8 @@
         android:layout_height="wrap_content"
         android:text=" statistics"
         android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@android:color/holo_blue_light"
+        android:typeface="serif"/>
 
     <Button
         android:id="@+id/profile"
@@ -46,7 +50,8 @@
         android:layout_height="wrap_content"
         android:text=" Profile"
         android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"/>
+        android:background="@android:color/holo_blue_light"
+        android:typeface="serif"/>
 
     
     

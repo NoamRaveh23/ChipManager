@@ -32,19 +32,27 @@
         android:hint="New Bet"
         android:layout_margin="30dp"
         android:typeface="serif"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="clean"
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="30dp"
-        android:typeface="serif"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="30dp"
-        android:typeface="serif"/>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/clean"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLEAN"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
 </LinearLayout>

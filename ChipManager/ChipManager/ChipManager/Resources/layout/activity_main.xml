@@ -8,50 +8,78 @@
     android:orientation="vertical"
     android:background="@drawable/tableback">
 
-    <Button
-        android:id="@+id/newGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" New Game"
-        android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"
-        android:typeface="serif"/>
 
-    <Button
-        android:id="@+id/ConGame"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Continue Game"
-        android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"
-        android:typeface="serif"/>
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" Options"
-        android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"
-        android:typeface="serif"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/newGame"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" New Game"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
-    <Button
-        android:id="@+id/stat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" statistics"
-        android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"
-        android:typeface="serif"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ConGame"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Continue Game"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
-    <Button
-        android:id="@+id/profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" Profile"
-        android:layout_margin="25dp"
-        android:background="@android:color/holo_blue_light"
-        android:typeface="serif"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/options"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Options"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/stat"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" statistics"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/profile"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Profile"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+    
+
+    
 
     
     

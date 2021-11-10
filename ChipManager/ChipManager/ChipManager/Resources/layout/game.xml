@@ -18,7 +18,7 @@
             
             android:layout_margin="20dp"
             android:background="@drawable/rounded_corner"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="70px"
             android:typeface="serif"/>
         <TextView
@@ -27,7 +27,7 @@
             android:text="big"
             android:layout_margin="20dp"
             android:background="@drawable/rounded_corner"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="70px"
             android:typeface="serif"
             />
@@ -37,7 +37,7 @@
             android:text="turn"
             android:layout_margin="20dp"
             android:background="@drawable/rounded_corner"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="70px"
             android:typeface="serif"/>
         

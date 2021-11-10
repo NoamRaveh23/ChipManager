@@ -13,7 +13,9 @@
         android:text="ADD NEW PLAYER"
         android:gravity="center"
         android:textSize="70px"
-        android:typeface="serif"/>
+        android:background="@drawable/rounded_corner"
+        android:typeface="serif"
+        android:textStyle="bold"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -49,22 +51,28 @@
             />
     </RadioGroup>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="save and add another player"
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="30dp"
-        android:typeface="serif"
-        />
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sna"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE AND ADD ANOTHER PLAYER"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="save and start playing"
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="30dp"
-        android:typeface="serif"
-        />
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sns"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE AND START PLAYING"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
 </LinearLayout> 

@@ -148,11 +148,6 @@
     <AndroidResource Include="Resources\drawable\Button1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\statisticsxml.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\profile.xml">
       <SubType>Designer</SubType>
     </AndroidResource>

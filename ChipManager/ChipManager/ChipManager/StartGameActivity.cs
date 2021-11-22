@@ -14,11 +14,17 @@ namespace ChipManager
     [Activity(Label = "StartGameActivity")]
     public class StartGameActivity : Activity
     {
+        List<Player> lst;
+        EditText name , money;
+        RadioGroup gender;
+        Button SaveStart , SaveAdd;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.startGame);
+            lst = new List<Player>();
+
         }
     }
 }

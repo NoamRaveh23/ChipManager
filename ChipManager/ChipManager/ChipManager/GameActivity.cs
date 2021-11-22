@@ -12,12 +12,16 @@ using System.Text;
 namespace ChipManager
 {
     [Activity(Label = "GameActivity")]
-    public class GameActivity : Activity
+    public class GameActivity : Activity 
     {
+        ListView lv;
+        PlayerAdapter adapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
+            lv.Adapter = adapter;
+            adapter = new PlayerAdapter(this, lst);
         }
     }
 }

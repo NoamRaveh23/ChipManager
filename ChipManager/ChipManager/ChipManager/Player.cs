@@ -17,11 +17,11 @@ namespace ChipManager
         private int money;
         private int bet;
         private string gender;
-        public Player(string name,string gender , int money , int bet)
+        public Player(string name,string gender , int money)
         {
             this.name = name;
             this.money = money;
-            this.bet = bet;
+            this.bet = 0;
             this.gender = gender;
         }
         public string getName()

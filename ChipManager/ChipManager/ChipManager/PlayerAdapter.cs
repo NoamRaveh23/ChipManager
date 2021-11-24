@@ -42,7 +42,7 @@ namespace ChipManager
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            Android.Views.LayoutInflater layoutInflater = ((MainActivity)context).LayoutInflater;
+            Android.Views.LayoutInflater layoutInflater = ((GameActivity)context).LayoutInflater;
             Android.Views.View view = layoutInflater.Inflate(Resource.Layout.playerView, parent, false);
             ImageView ivGender = view.FindViewById<ImageView>(Resource.Id.iv1);
             TextView tvName = view.FindViewById<TextView>(Resource.Id.tv1);

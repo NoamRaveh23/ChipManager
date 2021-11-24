@@ -21,6 +21,7 @@ namespace ChipManager
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
+            lv = (ListView)FindViewById(Resource.Id.lv);
             lp = StartGameActivity.lst;
             adapter = new PlayerAdapter(this, lp);
             lv.Adapter = adapter;

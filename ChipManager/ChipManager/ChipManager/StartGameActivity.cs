@@ -32,8 +32,21 @@ namespace ChipManager
             girl = (RadioButton)FindViewById(Resource.Id.radio_female);
             SaveAdd = (Button)FindViewById(Resource.Id.sna);
             SaveStart = (Button)FindViewById(Resource.Id.sns);
+            lst.Add(new Player("rotem", "girl", 69));
             SaveAdd.Click += SaveAdd_Click;
             SaveStart.Click += SaveStart_Click;
+            boy.Click += Boy_Click;
+            girl.Click += Girl_Click;
+        }
+
+        private void Girl_Click(object sender, EventArgs e)
+        {
+            gender = "girl";
+        }
+
+        private void Boy_Click(object sender, EventArgs e)
+        {
+            gender = "boy";
         }
 
         private void SaveStart_Click(object sender, EventArgs e)
@@ -66,18 +79,7 @@ namespace ChipManager
             {
                 if (this.counter < 6)
                 {
-                    if (boy.Selected)
-                    {
-                        gender = "boy";
-                    }
-                    else if (girl.Selected)
-                    {
-                        gender = "girl";
-                    }
-                    else
-                    {
-                        gender = "non";
-                    }
+                 
                     lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));
                     Toast.MakeText(this, "Player added!", ToastLength.Short).Show();
                     name.Text = "";

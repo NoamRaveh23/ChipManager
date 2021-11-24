@@ -12,6 +12,7 @@ using System.Text;
 namespace ChipManager
 {
     [Activity(Label = "StartGameActivity")]
+
     public class StartGameActivity : Activity
     {
         public static List<Player> lst = new List<Player>();

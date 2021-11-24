@@ -14,16 +14,16 @@ namespace ChipManager
     [Activity(Label = "GameActivity")]
     public class GameActivity : Activity 
     {
+        List<Player> lp;
         ListView lv;
         PlayerAdapter adapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
-            lv = StartGameActivity.lst;
+            lp = StartGameActivity.lst;
+            adapter = new PlayerAdapter(this, lp);
             lv.Adapter = adapter;
-            adapter = new PlayerAdapter(this, lst);
-            
         }
     }
 }

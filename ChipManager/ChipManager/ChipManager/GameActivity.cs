@@ -20,8 +20,10 @@ namespace ChipManager
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
+            lv = StartGameActivity.lst;
             lv.Adapter = adapter;
             adapter = new PlayerAdapter(this, lst);
+            
         }
     }
 }

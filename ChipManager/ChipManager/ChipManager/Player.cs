@@ -11,7 +11,7 @@ using System.Text;
 
 namespace ChipManager
 {
-    class Player
+    public class Player
     {
         private string name;
         private int money;
@@ -23,6 +23,13 @@ namespace ChipManager
             this.money = money;
             this.bet = 0;
             this.gender = gender;
+        }
+        public Player()
+        {
+            this.name = "";
+            this.money = 0;
+            this.bet = 0;
+            this.gender = "boy";
         }
         public string getName()
         {

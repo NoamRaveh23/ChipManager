@@ -14,7 +14,7 @@ namespace ChipManager
     [Activity(Label = "StartGameActivity")]
     public class StartGameActivity : Activity
     {
-        List<Player> lst;
+        public static List<Player> lst = new List<Player>();
         EditText name , money;
         RadioButton boy , girl;
         Button SaveStart , SaveAdd;
@@ -25,7 +25,6 @@ namespace ChipManager
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.startGame);
-            lst = new List<Player>();
             name = (EditText)FindViewById(Resource.Id.ETname);
             money = (EditText)FindViewById(Resource.Id.ETmoney);
             boy = (RadioButton)FindViewById(Resource.Id.radio_male);
@@ -45,15 +44,19 @@ namespace ChipManager
 
         private void SaveAdd_Click(object sender, EventArgs e)
         {
-            if (this.counter < 6)
+            if (this.counter < 5)
             {
                 addPlayer();
             }
-            else
+            else 
             {
+                addPlayer();
                 Toast.MakeText(this, "You can add only 6 players", ToastLength.Short).Show();
+                Intent intent = new Intent(this, typeof(GameActivity));
+                StartActivity(intent);
             }
-            //addPlayer();
+
+            
         }
 
         public void addPlayer()

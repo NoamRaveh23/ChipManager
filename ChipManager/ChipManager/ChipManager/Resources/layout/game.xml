@@ -48,35 +48,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
-     
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="name"
-            android:layout_margin="25dp"            
+            android:layout_margin="25dp"
             android:background="@drawable/rounded_corner"
             android:textColor="@android:color/black"
-            android:textSize="30px"
-            android:typeface="serif"/>
+            android:textSize="40px"
+            android:typeface="serif"
+            android:id="@+id/textView1" />
         <TextView
-             android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="money left"
             android:layout_margin="25dp"
             android:background="@drawable/rounded_corner"
             android:textColor="@android:color/black"
-            android:textSize="30px"
+            android:textSize="40px"
             android:typeface="serif"/>
         <TextView
-             android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="bet"
             android:layout_margin="25dp"
             android:background="@drawable/rounded_corner"
             android:textColor="@android:color/black"
-            android:textSize="30px"
+            android:textSize="40px"
             android:typeface="serif"/>
-        
+
     </LinearLayout>
 
     <LinearLayout

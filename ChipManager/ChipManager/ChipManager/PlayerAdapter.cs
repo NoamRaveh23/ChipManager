@@ -15,6 +15,7 @@ namespace ChipManager
     {
         Context context;
         List<Player> objects;
+        
         public PlayerAdapter(Android.Content.Context context, System.Collections.Generic.List<Player> objects)
         {
             this.context = context;
@@ -51,13 +52,13 @@ namespace ChipManager
             Player temp = objects[position];
             if (temp != null)
             {
-                if (temp.getGender().Equals("male"))
+                if (temp.getGender().Equals("boy"))
                 {
-                    ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/boy";
+                    //ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/boy";
                 }
-                else
+                else if(temp.getGender().Equals("girl"))
                 {
-                    ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/girl";
+                    //ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/girl";
                 }
                 tvName.Text = temp.getName();
                 tvMoney.Text = ""+temp.getMoney();

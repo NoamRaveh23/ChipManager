@@ -21,7 +21,11 @@
                 android:background="@drawable/boy"
             />
 
-            <TextView
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+                
+                <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:id="@+id/tv1"
@@ -30,9 +34,16 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="@android:color/black"
                 android:typeface="serif"
-            />
+                 android:gravity="center"/>
+            
 
-            <TextView
+            </LinearLayout>
+
+           <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+                
+                <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:id="@+id/tv2"
@@ -41,9 +52,16 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="@android:color/black"
                 android:typeface="serif"
-            />
+                android:gravity="center"/>
+            
 
-            <TextView
+            </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+                
+                <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:id="@+id/tv3"
@@ -52,7 +70,15 @@
                 android:textSize="40px"
                 android:textColor="@android:color/black"
                 android:typeface="serif"
-            />
+                 android:gravity="center"
+                />
+            
+
+            </LinearLayout>
+
+            
+
+            
 
         </LinearLayout>
 

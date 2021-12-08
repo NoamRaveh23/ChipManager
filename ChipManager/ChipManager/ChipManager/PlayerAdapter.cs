@@ -54,11 +54,11 @@ namespace ChipManager
             {
                 if (temp.getGender().Equals("boy"))
                 {
-                    //ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/boy";
+                    ivGender.SetImageResource(Resource.Drawable.boy);
                 }
                 else if(temp.getGender().Equals("girl"))
                 {
-                    //ivGender.Background = (Android.Graphics.Drawables.Drawable)"@drawable/girl";
+                    ivGender.SetImageResource(Resource.Drawable.girl);
                 }
                 tvName.Text = temp.getName();
                 tvMoney.Text = ""+temp.getMoney();

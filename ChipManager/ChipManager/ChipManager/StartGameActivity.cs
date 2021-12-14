@@ -20,7 +20,7 @@ namespace ChipManager
         RadioButton boy , girl;
         Button SaveStart , SaveAdd;
         string gender = "";
-        private int counter = 0; // number of players
+        public static int counter = 0; // number of players
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

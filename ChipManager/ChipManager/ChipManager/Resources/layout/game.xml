@@ -23,6 +23,18 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_gravity="left"/>
+        
+            <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/play"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play"
+            android:background="@drawable/rounded_corner"
+            android:layout_marginLeft="105dp"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/exit"
@@ -31,11 +43,12 @@
             android:layout_height="wrap_content"
             android:text="exit"
             android:background="@drawable/rounded_corner"
-            android:layout_marginLeft="170dp"
+            android:layout_marginLeft="105dp"
             android:typeface="serif"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp" />
 
     </LinearLayout>
     <LinearLayout
@@ -45,6 +58,7 @@
         android:gravity="center">
      
         <TextView
+            android:id="@+id/small"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="small"
@@ -55,6 +69,7 @@
             android:textSize="70px"
             android:typeface="serif"/>
         <TextView
+            android:id="@+id/big"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="big"
@@ -65,6 +80,7 @@
             android:typeface="serif"
             />
         <TextView
+            android:id="@+id/t"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="turn"

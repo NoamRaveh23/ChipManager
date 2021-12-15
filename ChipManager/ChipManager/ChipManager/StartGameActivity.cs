@@ -58,7 +58,7 @@ namespace ChipManager
 
         private void SaveAdd_Click(object sender, EventArgs e)
         {
-            if (this.counter < 5)
+            if (counter < 5)
             {
                 addPlayer();
             }
@@ -77,7 +77,7 @@ namespace ChipManager
         {
             try
             {
-                if (this.counter < 6)
+                if (counter < 6)
                 {
                  
                     lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));

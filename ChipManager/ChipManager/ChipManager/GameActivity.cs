@@ -17,6 +17,7 @@ namespace ChipManager
         private List<Player> lp;
         List<Player> p;
         public static Player turnp;
+        public static int bigBet;
         ListView lv;
         PlayerAdapter adapter;
         int counter;

@@ -47,5 +47,13 @@ namespace ChipManager
         {
             return this.bet;
         }
+        public void setBet(int newbet)
+        {
+            this.bet = newbet;
+        }
+        public void setMoney(int cost)
+        {
+            this.money -= cost;
+        }
     }
 }

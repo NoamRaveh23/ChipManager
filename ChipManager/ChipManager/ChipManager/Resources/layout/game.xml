@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="play"
             android:background="@drawable/rounded_corner"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="55dp"
             android:typeface="serif"
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="exit"
             android:background="@drawable/rounded_corner"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="55dp"
             android:typeface="serif"
             android:textStyle="bold"
             android:textColor="@android:color/white"

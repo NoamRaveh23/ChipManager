@@ -4206,10 +4206,13 @@ namespace ChipManager
 			public const int visible_removing_fragment_view_tag = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int withText = 2131230988;
+			public const int win = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
-			public const int wrap_content = 2131230989;
+			public const int withText = 2131230989;
+			
+			// aapt resource value: 0x7F08010E
+			public const int wrap_content = 2131230990;
 			
 			static Id()
 			{
@@ -4519,6 +4522,9 @@ namespace ChipManager
 			
 			// aapt resource value: 0x7F0B003F
 			public const int turn = 2131427391;
+			
+			// aapt resource value: 0x7F0B0040
+			public const int winner = 2131427392;
 			
 			static Layout()
 			{

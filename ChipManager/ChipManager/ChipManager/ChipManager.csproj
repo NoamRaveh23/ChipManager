@@ -159,7 +159,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\winner.xml" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Raw\PokerMusic.mp3" />
   </ItemGroup>

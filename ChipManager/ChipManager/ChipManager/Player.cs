@@ -17,7 +17,7 @@ namespace ChipManager
         private int money;
         private int bet;
         private string gender;
-        public Player(string name,string gender , int money)
+        public Player(string name, string gender, int money)
         {
             this.name = name;
             this.money = money;
@@ -54,6 +54,10 @@ namespace ChipManager
         public void setMoney(int cost)
         {
             this.money -= cost;
+        }
+        public void winMoney(int m)
+        {
+            this.money += m;
         }
     }
 }

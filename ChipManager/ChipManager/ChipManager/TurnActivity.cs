@@ -63,6 +63,7 @@ namespace ChipManager
                 p.setBet(Int32.Parse(bet.Text));
                 p.setMoney(Int32.Parse(bet.Text));
                 BigB = Int32.Parse(bet.Text);
+                GameActivity.bigBet = BigB;
                 Finish();
             }
             else 

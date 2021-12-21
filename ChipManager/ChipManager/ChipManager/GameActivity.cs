@@ -20,7 +20,7 @@ namespace ChipManager
         public static int bigBet;
         ListView lv;
         PlayerAdapter adapter;
-        int counter;
+        int counter = 0 , allMoney = 0;
         Button op, ex, play;
         TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -49,7 +49,27 @@ namespace ChipManager
 
         private void Play_Click(object sender, EventArgs e)
         {
-            turn();
+            if (counter < 4)
+            {
+                turn();
+                counter++;
+            }
+            else
+            {
+                endRound();
+            }
+
+        }
+
+        private void endRound()
+        {
+            Dialog d = new Dialog(this);
+            d.SetContentView(Resource.Layout.winner);
+            d.SetTitle("Insert Winner Number");
+            d.Show();
+            EditText et = (EditText)d.FindViewById(Resource.Id.win);
+            int winner = (Int32.Parse(et.Text));
+            p[winner-1].
         }
 
         private void Ex_Click(object sender, EventArgs e)
@@ -72,7 +92,16 @@ namespace ChipManager
                 Intent intent = new Intent(this, typeof(TurnActivity));
                 StartActivity(intent);
                 i++;
-
+                allMoney += bigBet;
+                /*t.Text = p[i].getName();
+                if (i < 6)
+                {
+                    big.Text = p[i + 1].getName();
+                }
+                else
+                {
+                    big.Text = p[0].getName();
+                }*/
             }
         }
     }

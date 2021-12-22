@@ -20,7 +20,8 @@ namespace ChipManager
         public static int bigBet;
         ListView lv;
         PlayerAdapter adapter;
-        int counter = 0 , allMoney = 0;
+        int counter = 0 , allMoney = 0 , pcount = 0;
+        private int i = 0;
         Button op, ex, play;
         TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,7 +35,7 @@ namespace ChipManager
             small = (TextView)FindViewById(Resource.Id.small);
             big = (TextView)FindViewById(Resource.Id.big);
             t = (TextView)FindViewById(Resource.Id.t);
-            op.Click += Op_Click;
+            //op.Click += Op_Click;
             ex.Click += Ex_Click;
             play.Click += Play_Click;
             this.lp = StartGameActivity.lst;
@@ -69,39 +70,44 @@ namespace ChipManager
             d.Show();
             EditText et = (EditText)d.FindViewById(Resource.Id.win);
             int winner = (Int32.Parse(et.Text));
-            p[winner-1].
+            p[winner - 1].winMoney(allMoney);
+            counter = 0;
+            small.Text = p[pcount].getName();
+            big.Text = p[pcount + 1].getName();
+            t.Text = p[pcount].getName();
+
         }
 
         private void Ex_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
-        private void Op_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void turn()
         {
-            int i = 0;
             p = this.lp;
-            turnp = p[i];
-            while (i<lp.Count)
+
+            if (i <= lp.Count)
             {
+                turnp = p[this.i];
                 Intent intent = new Intent(this, typeof(TurnActivity));
-                StartActivity(intent);
-                i++;
+                StartActivityForResult(intent, 0);
+            }
+            else
+            {
+                
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (requestCode == 0)
+            {
+                this.i++;
                 allMoney += bigBet;
-                /*t.Text = p[i].getName();
-                if (i < 6)
-                {
-                    big.Text = p[i + 1].getName();
-                }
-                else
-                {
-                    big.Text = p[0].getName();
-                }*/
             }
         }
     }

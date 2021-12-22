@@ -24,7 +24,9 @@ namespace ChipManager
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.turn);
+            
             p = GameActivity.turnp;
+            Toast.MakeText(this, "p:" + p.getName(), ToastLength.Short).Show();
             BigB = GameActivity.bigBet;
             Pname = (TextView)FindViewById(Resource.Id.pname);
             check = (RadioButton)FindViewById(Resource.Id.radio_check);
@@ -52,8 +54,8 @@ namespace ChipManager
 
         private void Clean_Click(object sender, EventArgs e)
         {
-            addB.Text = "New Bet";
-            
+            addB.Text = "Add Bet";
+            bet.Text = "";
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace ChipManager
             {
                 p.setBet(Int32.Parse(bet.Text));
                 p.setMoney(Int32.Parse(bet.Text));
+                GameActivity.turnp = p;
                 BigB = Int32.Parse(bet.Text);
                 GameActivity.bigBet = BigB;
                 Finish();

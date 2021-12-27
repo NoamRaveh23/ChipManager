@@ -13,4 +13,16 @@
         android:id="@+id/win"
         android:hint="insert winner"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/s"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:layout_margin="25dp"
+        android:background="@drawable/rounded_corner"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"/>
+
 </LinearLayout>

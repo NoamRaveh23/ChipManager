@@ -102,7 +102,7 @@ namespace ChipManager
             if (i < lp.Count && counter < 3)
             {
                 turnp = p[this.i];
-                t.Text = turnp.getName();
+                //t.Text = turnp.getName();
                 Intent intent = new Intent(this, typeof(TurnActivity));
                 StartActivityForResult(intent, 0);
             }
@@ -127,7 +127,7 @@ namespace ChipManager
             if (adapter != null)
             {
                 adapter.NotifyDataSetChanged();
-                //t.Text = turnp.getName();
+                t.Text = turnp.getName();
             }
             if (requestCode == 0)
             {

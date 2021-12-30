@@ -25,7 +25,28 @@ namespace ChipManager
             Gsb = (SeekBar)FindViewById(Resource.Id.Gsb);
             quit = (Button)FindViewById(Resource.Id.quit);
             resume = (Button)FindViewById(Resource.Id.resume);
-
+            Msb.ProgressChanged += Msb_ProgressChanged;
+            quit.Click += Quit_Click;
+            resume.Click += Resume_Click;
         }
+
+        private void Resume_Click(object sender, EventArgs e)
+        {
+            Finish();
+        }
+
+        private void Quit_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(FirstService));
+            StopService(intent);
+            Intent intent2 = new Intent(this, typeof(MainActivity));
+            StartActivity(intent2);
+        }
+
+        private void Msb_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
+        {
+            FirstService.setVolume(Msb.Progress);
+        }
+
     }
 }

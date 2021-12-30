@@ -12,8 +12,8 @@ namespace ChipManager
     public class MainActivity : AppCompatActivity
     {
         Button newGame , conGame, options, profile;
-        MediaPlayer mp;
-        AudioManager am;
+        //MediaPlayer mp;
+        //AudioManager am;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,11 +28,13 @@ namespace ChipManager
             conGame.Click += ConGame_Click;
             options.Click += Options_Click;
             profile.Click += Profile_Click;
-            mp = MediaPlayer.Create(this, Resource.Raw.PokerMusic);
+            Intent intent = new Intent(this, typeof(FirstService));
+            StartService(intent);
+            /*mp = MediaPlayer.Create(this, Resource.Raw.PokerMusic);
             mp.Start();
             am = (AudioManager)GetSystemService(Context.AudioService);
             int max = am.GetStreamMaxVolume(Stream.Music);
-            am.SetStreamVolume(Stream.Music, max / 2, 0);
+            am.SetStreamVolume(Stream.Music, max / 2, 0);*/
         }
 
         private void Profile_Click(object sender, System.EventArgs e)

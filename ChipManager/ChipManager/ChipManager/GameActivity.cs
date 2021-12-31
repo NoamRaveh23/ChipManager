@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidX.AppCompat.App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Text;
 namespace ChipManager
 {
     [Activity(Label = "GameActivity")]
-    public class GameActivity : Activity 
+    public class GameActivity : AppCompatActivity
     {
         private List<Player> lp;
         EditText et;
@@ -24,20 +25,18 @@ namespace ChipManager
         PlayerAdapter adapter;
         int counter = 0 , allMoney = 0 , pcount = 1;
         private int i = 0;
-        Button op, ex, play;
+        Button  ex, play;
         TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
-            lv = (ListView)FindViewById(Resource.Id.lv);
-            op = (Button)FindViewById(Resource.Id.options);
+            lv = (ListView)FindViewById(Resource.Id.lv);            
             ex = (Button)FindViewById(Resource.Id.exit);
             play = (Button)FindViewById(Resource.Id.play);
             small = (TextView)FindViewById(Resource.Id.small);
             big = (TextView)FindViewById(Resource.Id.big);
-            t = (TextView)FindViewById(Resource.Id.t);
-            //op.Click += Op_Click;
+            t = (TextView)FindViewById(Resource.Id.t);            
             ex.Click += Ex_Click;
             play.Click += Play_Click;
             this.lp = StartGameActivity.lst;
@@ -136,6 +135,21 @@ namespace ChipManager
             }
         }
 
-        
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.GameMenu , menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            base.OnOptionsItemSelected(item);
+            if (item.ItemId == Resource.Id.options)
+            {
+                Intent intent = new Intent(this, typeof(OptionsActivity));
+                StartActivity(intent);
+            }
+            return true;
+        }
     }
 }

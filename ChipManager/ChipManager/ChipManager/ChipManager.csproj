@@ -164,10 +164,10 @@
     <AndroidResource Include="Resources\layout\winner.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Raw\PokerMusic.mp3" />
+    <AndroidResource Include="Resources\menu\GameMenu.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\menu\GameMenu.xml" />
+    <AndroidResource Include="Resources\Raw\pokerMusic2MP3.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

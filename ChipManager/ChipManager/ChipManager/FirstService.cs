@@ -23,7 +23,7 @@ namespace ChipManager
         {
             // start your service logic here
 
-            mp = MediaPlayer.Create(this, Resource.Raw.PokerMusic);
+            mp = MediaPlayer.Create(this, Resource.Raw.pokerMusic2MP3);
             mp.Start();
             // Return the correct StartCommandResult for the type of service you are building
             return StartCommandResult.NotSticky;

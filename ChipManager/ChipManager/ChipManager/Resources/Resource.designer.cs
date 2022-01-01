@@ -4581,7 +4581,7 @@ namespace ChipManager
 		{
 			
 			// aapt resource value: 0x7F0E0000
-			public const int PokerMusic = 2131623936;
+			public const int pokerMusic2MP3 = 2131623936;
 			
 			static Raw()
 			{

@@ -12,6 +12,7 @@ namespace ChipManager
     public class MainActivity : AppCompatActivity
     {
         Button newGame , conGame, options, profile;
+        TextView lstw;
         //MediaPlayer mp;
         //AudioManager am;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -20,6 +21,7 @@ namespace ChipManager
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            lstw = (TextView)FindViewById(Resource.Id.lstw);
             newGame = (Button)FindViewById(Resource.Id.newGame);
             conGame = (Button)FindViewById(Resource.Id.ConGame);
             options = (Button)FindViewById(Resource.Id.options);
@@ -30,6 +32,8 @@ namespace ChipManager
             profile.Click += Profile_Click;
             Intent intent = new Intent(this, typeof(FirstService));
             StartService(intent);
+            ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
+            lstw.Text = " Last Round Winner: " + sp.GetString("lastWin", "non");
             /*mp = MediaPlayer.Create(this, Resource.Raw.PokerMusic);
             mp.Start();
             am = (AudioManager)GetSystemService(Context.AudioService);

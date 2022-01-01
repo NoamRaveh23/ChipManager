@@ -81,6 +81,10 @@ namespace ChipManager
             int winner = (Int32.Parse(et.Text));
             p[winner - 1].winMoney(allMoney);
             counter = 0;
+            ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
+            ISharedPreferencesEditor editor = sp.Edit();
+            editor.PutString("lastWin", p[winner - 1].getName());
+            editor.Commit();
             /*small.Text = p[pcount].getName();
             big.Text = p[pcount + 1].getName();
             t.Text = p[pcount].getName();

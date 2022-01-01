@@ -64,6 +64,18 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
 
+        <TextView
+             android:id="@+id/lstw"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Last Round Winner: "
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
     </LinearLayout>
 
     

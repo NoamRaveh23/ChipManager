@@ -32,7 +32,7 @@ namespace ChipManager
             girl = (RadioButton)FindViewById(Resource.Id.radio_female);
             SaveAdd = (Button)FindViewById(Resource.Id.sna);
             SaveStart = (Button)FindViewById(Resource.Id.sns);
-            lst.Add(new Player("rotem", "girl", 1111));
+            //lst.Add(new Player("rotem", "girl", 1111));
             SaveAdd.Click += SaveAdd_Click;
             SaveStart.Click += SaveStart_Click;
             boy.Click += Boy_Click;

@@ -16,7 +16,7 @@ namespace ChipManager
     {
         EditText bet;
         Button clean, save;
-        RadioButton check, addB;
+        RadioButton check, addB, allIn;
         TextView Pname;
         Player p;
         int BigB;
@@ -31,6 +31,7 @@ namespace ChipManager
             Pname = (TextView)FindViewById(Resource.Id.pname);
             check = (RadioButton)FindViewById(Resource.Id.radio_check);
             addB = (RadioButton)FindViewById(Resource.Id.radio_Bet);
+            allIn = (RadioButton)FindViewById(Resource.Id.radio_All);
             bet = (EditText)FindViewById(Resource.Id.newBet);
             save = (Button)FindViewById(Resource.Id.save);
             clean = (Button)FindViewById(Resource.Id.clean);
@@ -39,6 +40,12 @@ namespace ChipManager
             clean.Click += Clean_Click;
             check.Click += Check_Click; 
             addB.Click += AddB_Click;
+            allIn.Click += AllIn_Click;
+        }
+
+        private void AllIn_Click(object sender, EventArgs e)
+        {
+            bet.Text = p.getMoney().ToString();
         }
 
         private void AddB_Click(object sender, EventArgs e)
@@ -60,7 +67,7 @@ namespace ChipManager
 
         private void Save_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(bet.Text) > BigB && Int32.Parse(bet.Text)<= p.getMoney())
+            if (Int32.Parse(bet.Text) > BigB && Int32.Parse(bet.Text) <= p.getMoney())
             {
                 p.setBet(Int32.Parse(bet.Text));
                 p.setMoney(Int32.Parse(bet.Text));
@@ -69,9 +76,14 @@ namespace ChipManager
                 GameActivity.bigBet = BigB;
                 Finish();
             }
-            else 
+            else if (Int32.Parse(bet.Text) < BigB && Int32.Parse(bet.Text) == p.getMoney())
             {
-                Toast.MakeText(this, "Minimum bet:" + (BigB+1), ToastLength.Short).Show();
+                GameActivity.turnp = p;
+                Finish();
+            }
+            else
+            {
+                Toast.MakeText(this, "Minimum bet:" + (BigB + 1), ToastLength.Short).Show();
             }
             
         }

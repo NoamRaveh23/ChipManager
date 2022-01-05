@@ -93,7 +93,7 @@ namespace ChipManager
 
         private void Ex_Click(object sender, EventArgs e)
         {
-            
+            Finish();
         }
 
 

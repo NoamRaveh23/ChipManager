@@ -79,6 +79,13 @@ namespace ChipManager
         {
             d.Dismiss();
             int winner = (Int32.Parse(et.Text));
+            for (int i =0; i<lp.Count; i++)
+            {
+                if ((p[i].getMoney() <=0)&&(i!=(winner-1)))
+                {
+                    p[i].setElim(true);
+                }
+            }
             p[winner - 1].winMoney(allMoney);
             counter = 0;
             ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
@@ -101,27 +108,38 @@ namespace ChipManager
         public void turn()
         {
             p = this.lp;
-
-            if (i < lp.Count && counter < 3)
+            if (!turnp.getElim()&& !turnp.getAllIn())
             {
-                turnp = p[this.i];
-                //t.Text = turnp.getName();
-                Intent intent = new Intent(this, typeof(TurnActivity));
-                StartActivityForResult(intent, 0);
-            }
-            else if (i >= lp.Count && counter < 3)
-            {
-                this.i = 0;
-                counter++;
-                turnp = p[this.i];
-                t.Text = turnp.getName();
-                Intent intent = new Intent(this, typeof(TurnActivity));
-                StartActivityForResult(intent, 0);
+                if (i < lp.Count && counter < 3)
+                {
+                    turnp = p[this.i];
+                    //t.Text = turnp.getName();
+                    Intent intent = new Intent(this, typeof(TurnActivity));
+                    StartActivityForResult(intent, 0);
+                }
+                else if (i >= lp.Count && counter < 3)
+                {
+                    this.i = 0;
+                    counter++;
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    Intent intent = new Intent(this, typeof(TurnActivity));
+                    StartActivityForResult(intent, 0);
+                }
+                else
+                {
+                    endRound();
+                }
             }
             else
             {
-                endRound();
+                if (adapter != null)
+                {
+                    adapter.NotifyDataSetChanged();
+                    t.Text = turnp.getName();                    
+                }
             }
+            
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -155,5 +173,13 @@ namespace ChipManager
             }
             return true;
         }
+        /*public static bool Elim(Player pl)
+        {
+            if (pl.getElim())
+            {
+                return true;
+            }
+            return false;
+        }*/
     }
 }

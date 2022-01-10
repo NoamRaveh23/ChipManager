@@ -17,12 +17,14 @@ namespace ChipManager
         private int money;
         private int bet;
         private string gender;
+        private bool elim = false , allIn = false;
         public Player(string name, string gender, int money)
         {
             this.name = name;
             this.money = money;
             this.bet = 0;
             this.gender = gender;
+            this.elim = false;
         }
         public Player()
         {
@@ -30,6 +32,7 @@ namespace ChipManager
             this.money = 0;
             this.bet = 0;
             this.gender = "boy";
+            this.elim = false;
         }
         public string getName()
         {
@@ -47,6 +50,10 @@ namespace ChipManager
         {
             return this.bet;
         }
+        public bool getElim()
+        {
+            return this.elim;
+        }
         public void setBet(int newbet)
         {
             this.bet = newbet;
@@ -59,5 +66,29 @@ namespace ChipManager
         {
             this.money += m;
         }
+        public void setElim(bool b)
+        {
+            this.elim = b;
+            if (b)
+            {
+                if (this.gender.Equals("girl"))
+                {
+                    this.gender = "elimGirl";
+                }
+                else if (this.gender.Equals("boy"))
+                {
+                    this.gender = "elimBoy";
+                }
+            }
+        }
+        public void setAllIn(bool b)
+        {
+            this.allIn =b;
+        }
+        public bool getAllIn()
+        {
+            return this.allIn;
+        }
     }
+
 }

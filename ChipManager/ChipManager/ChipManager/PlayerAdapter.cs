@@ -56,9 +56,17 @@ namespace ChipManager
                 {
                     ivGender.SetImageResource(Resource.Drawable.boy);
                 }
-                else if(temp.getGender().Equals("girl"))
+                else if (temp.getGender().Equals("girl"))
                 {
                     ivGender.SetImageResource(Resource.Drawable.girl);
+                }
+                else if (temp.getGender().Equals("elimGirl"))
+                {
+                    ivGender.SetImageResource(Resource.Drawable.girlElim);
+                }
+                else if (temp.getGender().Equals("elimBoy"))
+                {
+                    ivGender.SetImageResource(Resource.Drawable.boyElim);
                 }
                 tvName.Text = temp.getName();
                 tvMoney.Text = ""+temp.getMoney();

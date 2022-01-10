@@ -46,23 +46,26 @@ namespace ChipManager
         private void AllIn_Click(object sender, EventArgs e)
         {
             bet.Text = p.getMoney().ToString();
+            p.setAllIn(true);
         }
 
         private void AddB_Click(object sender, EventArgs e)
         {
-            
+            p.setAllIn(false);
         }
 
         private void Check_Click(object sender, EventArgs e)
         {
             bet.Text = "XXXXXXXX";
             p.setBet(BigB);
+            p.setAllIn(false);
         }
 
         private void Clean_Click(object sender, EventArgs e)
         {
             addB.Text = "Add Bet";
             bet.Text = "";
+            p.setAllIn(false);
         }
 
         private void Save_Click(object sender, EventArgs e)

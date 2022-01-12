@@ -133,11 +133,27 @@ namespace ChipManager
             }
             else
             {
-                if (adapter != null)
+                if (i < lp.Count-1 && counter < 3)
                 {
-                    adapter.NotifyDataSetChanged();
-                    t.Text = turnp.getName();                    
+                    this.i++;
+                    turnp = p[this.i];
+                    
                 }
+                else if (i >= lp.Count-1 && counter < 3)
+                {
+                    this.i = 0;
+                }
+                else
+                {
+                    if (adapter != null)
+                    {
+                        adapter.NotifyDataSetChanged();
+                        t.Text = turnp.getName();
+                    }
+                    endRound();
+                }
+                
+                
             }
             
         }
@@ -153,7 +169,14 @@ namespace ChipManager
             if (requestCode == 0)
             {
                 this.i++;
-                allMoney += bigBet;
+                if (turnp.getAllIn())
+                {
+                    allMoney += turnp.getBet();
+                }
+                else
+                {
+                    allMoney += bigBet;
+                }
             }
         }
 

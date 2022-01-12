@@ -56,7 +56,7 @@ namespace ChipManager
 
         private void Check_Click(object sender, EventArgs e)
         {
-            bet.Text = "XXXXXXXX";
+            bet.Text = BigB.ToString();
             p.setBet(BigB);
             p.setAllIn(false);
         }
@@ -70,7 +70,7 @@ namespace ChipManager
 
         private void Save_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(bet.Text) > BigB && Int32.Parse(bet.Text) <= p.getMoney())
+            if (Int32.Parse(bet.Text) >= BigB && Int32.Parse(bet.Text) <= p.getMoney())
             {
                 p.setBet(Int32.Parse(bet.Text));
                 p.setMoney(Int32.Parse(bet.Text));
@@ -79,9 +79,11 @@ namespace ChipManager
                 GameActivity.bigBet = BigB;
                 Finish();
             }
-            else if (Int32.Parse(bet.Text) < BigB && Int32.Parse(bet.Text) == p.getMoney())
+            else if (Int32.Parse(bet.Text) == p.getMoney())
             {
                 GameActivity.turnp = p;
+                p.setBet(p.getMoney());
+                p.setMoney(p.getMoney());
                 Finish();
             }
             else

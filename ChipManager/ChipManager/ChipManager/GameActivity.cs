@@ -113,6 +113,7 @@ namespace ChipManager
                 if (i < lp.Count && counter < 3)
                 {
                     turnp = p[this.i];
+                    t.Text = turnp.getName();
                     //t.Text = turnp.getName();
                     Intent intent = new Intent(this, typeof(TurnActivity));
                     StartActivityForResult(intent, 0);
@@ -137,11 +138,13 @@ namespace ChipManager
                 {
                     this.i++;
                     turnp = p[this.i];
-                    
+                    t.Text = turnp.getName();
                 }
-                else if (i >= lp.Count-1 && counter < 3)
+                else if (i >= lp.Count && counter < 3)
                 {
                     this.i = 0;
+                    counter++;
+                    turnp = p[this.i];
                 }
                 else
                 {

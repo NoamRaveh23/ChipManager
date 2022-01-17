@@ -134,12 +134,17 @@ namespace ChipManager
             }
             else
             {
-                if (i < lp.Count-1 && counter < 3)
+                if (i < lp.Count - 1 && counter < 3)
                 {
-                    this.i++;
+                    
                     turnp = p[this.i];
+                    this.i++;
                     t.Text = turnp.getName();
                 }
+                /*else if (i == lp.Count - 1 && counter < 3)
+                {
+                    
+                }*/
                 else if (i >= lp.Count && counter < 3)
                 {
                     this.i = 0;

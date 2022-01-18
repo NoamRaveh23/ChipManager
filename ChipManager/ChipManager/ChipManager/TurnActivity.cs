@@ -70,7 +70,7 @@ namespace ChipManager
 
         private void Save_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(bet.Text) >= BigB && Int32.Parse(bet.Text) <= p.getMoney())
+            if (Int32.Parse(bet.Text) >= BigB && Int32.Parse(bet.Text) < p.getMoney())
             {
                 p.setBet(Int32.Parse(bet.Text));
                 p.setMoney(Int32.Parse(bet.Text));
@@ -81,9 +81,15 @@ namespace ChipManager
             }
             else if (Int32.Parse(bet.Text) == p.getMoney())
             {
-                GameActivity.turnp = p;
+                p.setAllIn(true);
                 p.setBet(p.getMoney());
                 p.setMoney(p.getMoney());
+                GameActivity.turnp = p;
+                if (p.getBet() > BigB)
+                {
+                    BigB = Int32.Parse(bet.Text);
+                    GameActivity.bigBet = BigB;
+                }
                 Finish();
             }
             else

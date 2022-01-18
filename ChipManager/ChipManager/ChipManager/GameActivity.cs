@@ -108,6 +108,55 @@ namespace ChipManager
         public void turn()
         {
             p = this.lp;
+            /*if (!p[this.i].getElim() && !p[this.i].getAllIn())
+            {
+                if (i < lp.Count && counter < 3)
+                {
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    //t.Text = turnp.getName();
+                    Intent intent = new Intent(this, typeof(TurnActivity));
+                    StartActivityForResult(intent, 0);
+                }
+                else if (i >= lp.Count && counter < 3)
+                {
+                    this.i = 0;
+                    counter++;
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    Intent intent = new Intent(this, typeof(TurnActivity));
+                    StartActivityForResult(intent, 0);
+                }
+                else
+                {
+                    endRound();
+                }
+            }
+            else
+            {
+                if (i < lp.Count && counter < 3)
+                {
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    //t.Text = turnp.getName();
+                    this.i++;
+                    
+                }
+                else if (i >= lp.Count && counter < 3)
+                {
+                    this.i = 0;
+                    counter++;
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    this.i++;
+                    
+                }
+                else
+                {
+                    endRound();
+                }
+            }*/
+            
             if (!turnp.getElim()&& !turnp.getAllIn())
             {
                 if (i < lp.Count && counter < 3)
@@ -134,24 +183,20 @@ namespace ChipManager
             }
             else
             {
-                if (i < lp.Count - 1 && counter < 3)
+                if (i <= lp.Count - 1 && counter < 3)
                 {
-                    
+
                     turnp = p[this.i];
                     this.i++;
                     t.Text = turnp.getName();
                 }
-                /*else if (i == lp.Count - 1 && counter < 3)
-                {
-                    
-                }*/
-                else if (i >= lp.Count && counter < 3)
+                else if (i >= lp.Count-1 && counter < 3)
                 {
                     this.i = 0;
                     counter++;
                     turnp = p[this.i];
                 }
-                else
+                else if (i >= lp.Count && counter >= 3)
                 {
                     if (adapter != null)
                     {
@@ -160,10 +205,30 @@ namespace ChipManager
                     }
                     endRound();
                 }
-                
-                
+                else
+                {
+                    Toast.MakeText(this, "aaaaaa", ToastLength.Short).Show();
+                }
+                /*if (i < lp.Count && counter < 3)
+                {
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    
+                }
+                else if (i >= lp.Count && counter < 3)
+                {
+                    this.i = 0;
+                    counter++;
+                    turnp = p[this.i];
+                    t.Text = turnp.getName();
+                    
+                }
+                else
+                {
+                    endRound();
+                }*/
             }
-            
+
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -177,8 +242,9 @@ namespace ChipManager
             if (requestCode == 0)
             {
                 this.i++;
-                if (turnp.getAllIn())
+                if (turnp.getMoney() == 0 && !turnp.getElim())
                 {
+                    turnp.setAllIn(true);
                     allMoney += turnp.getBet();
                 }
                 else

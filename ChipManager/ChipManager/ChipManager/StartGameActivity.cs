@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -18,10 +19,12 @@ namespace ChipManager
         public static List<Player> lst = new List<Player>();
         EditText name , money;
         RadioButton boy , girl;
-        Button SaveStart , SaveAdd;
+        Button SaveStart , SaveAdd , photo;
         string gender = "";
         public static int counter = 0; // number of players
-
+        Bitmap bit;
+        ImageView img;
+        bool t = false; // image check
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,12 +35,34 @@ namespace ChipManager
             girl = (RadioButton)FindViewById(Resource.Id.radio_female);
             SaveAdd = (Button)FindViewById(Resource.Id.sna);
             SaveStart = (Button)FindViewById(Resource.Id.sns);
+            photo = (Button)FindViewById(Resource.Id.photo);
             //lst.Add(new Player("rotem", "girl", 1111));
             SaveAdd.Click += SaveAdd_Click;
             SaveStart.Click += SaveStart_Click;
             boy.Click += Boy_Click;
             girl.Click += Girl_Click;
+            photo.Click += Photo_Click;
         }
+
+        private void Photo_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(Android.Provider.MediaStore.ActionImageCapture);
+            StartActivityForResult(intent, 2);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (requestCode == 2)
+            {
+                if (resultCode == Result.Ok)
+                {
+                    bit = (Bitmap)data.Extras.Get("data");
+                    t = true;
+                }
+            }
+        }
+                
 
         private void Girl_Click(object sender, EventArgs e)
         {
@@ -79,8 +104,17 @@ namespace ChipManager
             {
                 if (counter < 6)
                 {
-                 
-                    lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));
+                    if (t)
+                    {
+                        lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text),bit));
+                        bit = null;
+                        t = false;
+                    }
+                    else
+                    {
+                        lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));
+                    }
+                    
                     Toast.MakeText(this, "Player added!", ToastLength.Short).Show();
                     name.Text = "";
                     money.Text = "";

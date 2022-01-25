@@ -52,7 +52,11 @@ namespace ChipManager
             Player temp = objects[position];
             if (temp != null)
             {
-                if (temp.getGender().Equals("boy"))
+                if (temp.ifPImage())
+                {
+                    ivGender.SetImageBitmap(temp.getBit());
+                }                
+                else if (temp.getGender().Equals("boy"))
                 {
                     ivGender.SetImageResource(Resource.Drawable.boy);
                 }

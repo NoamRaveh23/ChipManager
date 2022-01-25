@@ -55,6 +55,18 @@
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/photo"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Photo"
+            android:layout_margin="25dp"
+            android:background="@drawable/rounded_corner"
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sna"
             android:gravity="center"
             android:layout_width="match_parent"

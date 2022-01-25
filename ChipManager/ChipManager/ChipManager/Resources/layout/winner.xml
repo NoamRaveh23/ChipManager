@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/win"
-        android:hint="insert winner"/>
+        android:hint="insert winner"
+        android:inputType="number"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/s"

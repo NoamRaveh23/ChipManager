@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -17,7 +18,18 @@ namespace ChipManager
         private int money;
         private int bet;
         private string gender;
-        private bool elim = false , allIn = false;
+        private bool elim = false , allIn = false , imgcheck = false;
+        private Bitmap bit;
+        public Player(string name, string gender, int money, Bitmap bit)
+        {
+            this.name = name;
+            this.money = money;
+            this.bet = 0;
+            this.gender = gender;
+            this.elim = false;
+            this.bit = bit;
+            this.imgcheck = true;
+        }
         public Player(string name, string gender, int money)
         {
             this.name = name;
@@ -25,6 +37,7 @@ namespace ChipManager
             this.bet = 0;
             this.gender = gender;
             this.elim = false;
+            this.imgcheck = false;
         }
         public Player()
         {
@@ -33,6 +46,7 @@ namespace ChipManager
             this.bet = 0;
             this.gender = "boy";
             this.elim = false;
+            this.imgcheck = false;
         }
         public string getName()
         {
@@ -88,6 +102,18 @@ namespace ChipManager
         public bool getAllIn()
         {
             return this.allIn;
+        }
+        public void setPBit(Bitmap bit)
+        {
+            this.bit = bit;
+        }
+        public Bitmap getBit()
+        {
+            return this.bit;
+        }
+        public bool ifPImage()
+        {
+            return this.imgcheck;
         }
     }
 

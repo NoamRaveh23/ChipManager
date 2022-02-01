@@ -13,12 +13,15 @@ namespace ChipManager
 {
     class Game:Player
     {
+        
         protected List<Player> game;
-        public int state { get; set; }
+        public int code { get; set; }
         public int id { get; set; }
         public Game(List<Player> game)
         {
             this.game = game;
+            Random rnd = new Random();
+            this.code = rnd.Next(999, 99999);
         }
         public Game()
         {

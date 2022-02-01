@@ -26,7 +26,7 @@ namespace ChipManager
               .Child(database)
               .OnceAsync<Game>()).Select(item => new Game
               {
-                  state = item.Object.state,
+                  code = item.Object.code,
                   id = item.Object.id
               }).ToList();
         }
@@ -39,13 +39,13 @@ namespace ChipManager
               .PostAsync(game);
         }
 
-        public static async Task<Game> Get(int id)
+        public static async Task<Game> Get(int code)
         {
             var allPersons = await GetAll();
             await firebase
               .Child(database)
               .OnceAsync<Game>();
-            return allPersons.Where(a => a.id == id).FirstOrDefault();
+            return allPersons.Where(a => a.code == code).FirstOrDefault();
         }
 
         public static async Task Update(Game state)

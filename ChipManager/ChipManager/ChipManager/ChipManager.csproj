@@ -65,6 +65,7 @@
     <Compile Include="FirstService.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameActivity.cs" />
+    <Compile Include="GameFirebaseActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="OptionsActivity.cs" />
     <Compile Include="Player.cs" />

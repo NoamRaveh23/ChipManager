@@ -16,6 +16,7 @@ namespace ChipManager
     public class StartGameFirebaseActivity : Activity
     {
         public static List<Player> lst = new List<Player>();
+        public static int code;
         EditText name, money;
         RadioButton boy, girl;
         Button SaveStart, SaveAdd, photo;
@@ -73,11 +74,12 @@ namespace ChipManager
             gender = "boy";
         }
 
-        private void SaveStart_Click(object sender, EventArgs e)
+        private async void SaveStart_Click(object sender, EventArgs e)
         {
-            addPlayer();
+            
             if (create)
             {
+                addPlayer();
                 Game game = new Game(lst);
                 Intent intent = new Intent(this, typeof(GameActivity));
                 StartActivity(intent);
@@ -86,26 +88,29 @@ namespace ChipManager
             {
                 try
                 {
-                    int code;
-                    Game game = await FirebaseHelper.Get(code);
+                    Game game = new Game();
+                    code = game.code;
+                    game = await FirebaseHelper.Get(code);
+                    lst = game.getGList();
+                    addPlayer();
+                    game.setGList(lst);
+                    Intent intent = new Intent(this, typeof(GameActivity));
+                    StartActivity(intent);
                 }
                 catch
                 {
-                    
+                    Toast.MakeText(this, "Invalid Game Code", ToastLength.Short).Show();
                 }
             }
             
         }
 
-        public async void SetGameAsync(int code)
-        {
-            game = await FirebaseHelper.Get(code);
-        }
+        
         public void addPlayer()
         {
             try
             {
-                if (counter < 6)
+                if (lst.Count < 6)
                 {
                     if (t)
                     {

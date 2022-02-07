@@ -23,7 +23,8 @@ namespace ChipManager
         public static int bigBet;
         ListView lv;
         PlayerAdapter adapter;
-        int counter = 0 , allMoney = 0 , pcount = 1;
+        public static int counter = 0;
+        int allMoney = 0 , pcount = 1;
         private int i = 0;
         Button  ex, play;
         TextView small, big, t;
@@ -183,7 +184,22 @@ namespace ChipManager
             }
             else
             {
-                if (i <= lp.Count - 1 && counter < 3)
+                skip(p , this.i);
+                
+                if (counter >= 3)
+                {
+                    if (adapter != null)
+                    {
+                        adapter.NotifyDataSetChanged();
+                        t.Text = turnp.getName();
+                    }
+                    endRound();
+                }
+                else
+                {
+                    Toast.MakeText(this, "aaaaaa", ToastLength.Short).Show();
+                }
+                /*if (i <= lp.Count - 1 && counter < 3)
                 {
 
                     turnp = p[this.i];
@@ -208,7 +224,7 @@ namespace ChipManager
                 else
                 {
                     Toast.MakeText(this, "aaaaaa", ToastLength.Short).Show();
-                }
+                }*/
                 /*if (i < lp.Count && counter < 3)
                 {
                     turnp = p[this.i];
@@ -229,6 +245,21 @@ namespace ChipManager
                 }*/
             }
 
+        }
+
+        public static void skip(List<Player> p , int i)
+        {
+            if (i < p.Count-1)
+            {
+                i++;
+                turnp = p[i];
+            }
+            else if (i>=p.Count-1)
+            {
+                i = 0;
+                turnp = p[i];
+                counter++;
+            }
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)

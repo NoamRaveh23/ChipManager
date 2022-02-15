@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace ChipManager
 {
@@ -46,7 +48,7 @@ namespace ChipManager
             girl.Click += Girl_Click;
             photo.Click += Photo_Click;
         }
-
+        //open camera
         private void Photo_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(Android.Provider.MediaStore.ActionImageCapture);

@@ -13,7 +13,7 @@ using System.Text;
 namespace ChipManager
 {
     [Activity(Label = "GameFirebaseActivity")]
-    public class GameFirebaseActivity : Activity
+    public class GameFirebaseActivity : Activity 
     {
         private List<Player> lp;
         EditText et;

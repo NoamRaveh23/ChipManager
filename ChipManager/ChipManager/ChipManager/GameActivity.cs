@@ -15,16 +15,16 @@ namespace ChipManager
     [Activity(Label = "GameActivity")]
     public class GameActivity : AppCompatActivity
     {
-        private List<Player> lp;
+        private List<Player> lp; // list of players
         EditText et;
-        Dialog d;
-        List<Player> p;
-        public static Player turnp;
-        public static int bigBet;
+        Dialog d; // dialog for choosing the winner
+        List<Player> p; // clone of lp
+        public static Player turnp; // player to play
+        public static int bigBet; // the highest bet yet
         ListView lv;
         PlayerAdapter adapter;
-        public static int counter = 0;
-        int allMoney = 0 , pcount = 1;
+        public static int counter = 0 , g = 0; //g --> games played
+        int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
         private int i = 0;
         Button  ex, play;
         TextView small, big, t;
@@ -32,12 +32,12 @@ namespace ChipManager
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
-            lv = (ListView)FindViewById(Resource.Id.lv);            
+            lv = (ListView)FindViewById(Resource.Id.lv);
             ex = (Button)FindViewById(Resource.Id.exit);
             play = (Button)FindViewById(Resource.Id.play);
             small = (TextView)FindViewById(Resource.Id.small);
             big = (TextView)FindViewById(Resource.Id.big);
-            t = (TextView)FindViewById(Resource.Id.t);            
+            t = (TextView)FindViewById(Resource.Id.t);
             ex.Click += Ex_Click;
             play.Click += Play_Click;
             this.lp = StartGameActivity.lst;
@@ -52,7 +52,7 @@ namespace ChipManager
 
         private void Play_Click(object sender, EventArgs e)
         {           
-            turn();                           
+            turn();
         }
 
         private void endRound()
@@ -88,7 +88,7 @@ namespace ChipManager
                 }
             }
             p[winner - 1].winMoney(allMoney);
-            counter = 0;
+            restartGame();
             ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
             ISharedPreferencesEditor editor = sp.Edit();
             editor.PutString("lastWin", p[winner - 1].getName());
@@ -99,6 +99,21 @@ namespace ChipManager
             pcount++;*/
         }
 
+        public void restartGame()
+        {
+            counter = 0;
+            allMoney = 0;
+            bigBet = 0;
+            if (g < p.Count)
+            {
+                g++;
+            }
+            else
+            {
+                g = 0;
+            }
+            turnp = p[g];
+        }
         private void Ex_Click(object sender, EventArgs e)
         {
             Finish();

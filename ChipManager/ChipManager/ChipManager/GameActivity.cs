@@ -18,15 +18,15 @@ namespace ChipManager
         private List<Player> lp; // list of players
         EditText et;
         Dialog d; // dialog for choosing the winner
-        List<Player> p; // clone of lp
+        public static List<Player> p; // clone of lp
         public static Player turnp; // player to play
         public static int bigBet; // the highest bet yet
-        ListView lv;
+        ListView lv; //view the players
         PlayerAdapter adapter;
         public static int counter = 0 , g = 0; //g --> games played
         int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
-        private int i = 0;
-        Button  ex, play;
+        private int i = 0; // position of turnp
+        Button  ex, play; // play --> play turn   ex --> exit
         TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,6 +57,7 @@ namespace ChipManager
 
         private void endRound()
         {
+            counter++;
             d = new Dialog(this);
             d.SetContentView(Resource.Layout.winner);
             et = (EditText)d.FindViewById(Resource.Id.win);
@@ -65,6 +66,13 @@ namespace ChipManager
             d.SetTitle("Insert Winner Number");
             d.SetCancelable(true);
             d.Show();
+            for (int i = 0; i < p.Count; i++)
+            {
+                if (!(p[i].getAllIn()) && !(p[i].getElim()))
+                {
+                    p[i].isCheck = false;
+                }
+            }
             
             /*int winner = (Int32.Parse(et.Text));
             p[ 1].winMoney(allMoney);
@@ -124,7 +132,7 @@ namespace ChipManager
         public void turn()
         {
             p = this.lp;
-            /*if (!p[this.i].getElim() && !p[this.i].getAllIn())
+            if (!turnp.getElim() && !turnp.getAllIn())
             {
                 if (i < lp.Count && counter < 3)
                 {
@@ -137,70 +145,21 @@ namespace ChipManager
                 else if (i >= lp.Count && counter < 3)
                 {
                     this.i = 0;
-                    counter++;
+                    //counter++;
                     turnp = p[this.i];
                     t.Text = turnp.getName();
                     Intent intent = new Intent(this, typeof(TurnActivity));
                     StartActivityForResult(intent, 0);
                 }
-                else
+                else if (everyoneCheck(p))
                 {
                     endRound();
                 }
             }
             else
             {
-                if (i < lp.Count && counter < 3)
-                {
-                    turnp = p[this.i];
-                    t.Text = turnp.getName();
-                    //t.Text = turnp.getName();
-                    this.i++;
-                    
-                }
-                else if (i >= lp.Count && counter < 3)
-                {
-                    this.i = 0;
-                    counter++;
-                    turnp = p[this.i];
-                    t.Text = turnp.getName();
-                    this.i++;
-                    
-                }
-                else
-                {
-                    endRound();
-                }
-            }*/
-            
-            if (!turnp.getElim()&& !turnp.getAllIn())
-            {
-                if (i < lp.Count && counter < 3)
-                {
-                    turnp = p[this.i];
-                    t.Text = turnp.getName();
-                    //t.Text = turnp.getName();
-                    Intent intent = new Intent(this, typeof(TurnActivity));
-                    StartActivityForResult(intent, 0);
-                }
-                else if (i >= lp.Count && counter < 3)
-                {
-                    this.i = 0;
-                    counter++;
-                    turnp = p[this.i];
-                    t.Text = turnp.getName();
-                    Intent intent = new Intent(this, typeof(TurnActivity));
-                    StartActivityForResult(intent, 0);
-                }
-                else
-                {
-                    endRound();
-                }
-            }
-            else
-            {
-                skip(p , this.i);
-                
+                skip(p, this.i);
+
                 if (counter >= 3)
                 {
                     if (adapter != null)
@@ -214,6 +173,56 @@ namespace ChipManager
                 {
                     Toast.MakeText(this, "aaaaaa", ToastLength.Short).Show();
                 }
+                /*if (!p[this.i].getElim() && !p[this.i].getAllIn())
+                {
+                    if (i < lp.Count && counter < 3)
+                    {
+                        turnp = p[this.i];
+                        t.Text = turnp.getName();
+                        //t.Text = turnp.getName();
+                        Intent intent = new Intent(this, typeof(TurnActivity));
+                        StartActivityForResult(intent, 0);
+                    }
+                    else if (i >= lp.Count && counter < 3)
+                    {
+                        this.i = 0;
+                        counter++;
+                        turnp = p[this.i];
+                        t.Text = turnp.getName();
+                        Intent intent = new Intent(this, typeof(TurnActivity));
+                        StartActivityForResult(intent, 0);
+                    }
+                    else
+                    {
+                        endRound();
+                    }
+                }
+                else
+                {
+                    if (i < lp.Count && counter < 3)
+                    {
+                        turnp = p[this.i];
+                        t.Text = turnp.getName();
+                        //t.Text = turnp.getName();
+                        this.i++;
+
+                    }
+                    else if (i >= lp.Count && counter < 3)
+                    {
+                        this.i = 0;
+                        counter++;
+                        turnp = p[this.i];
+                        t.Text = turnp.getName();
+                        this.i++;
+
+                    }
+                    else
+                    {
+                        endRound();
+                    }
+                }*/
+
+
                 /*if (i <= lp.Count - 1 && counter < 3)
                 {
 
@@ -260,6 +269,18 @@ namespace ChipManager
                 }*/
             }
 
+        }
+
+        public static bool everyoneCheck(List<Player> p)
+        {
+            for (int i = 0; i< p.Count; i++)
+            {
+                if (p[i].isCheck == false)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static void skip(List<Player> p , int i)

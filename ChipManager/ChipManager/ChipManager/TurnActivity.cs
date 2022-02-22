@@ -47,11 +47,13 @@ namespace ChipManager
         {
             bet.Text = p.getMoney().ToString();
             p.setAllIn(true);
+            p.isCheck = true;
         }
 
         private void AddB_Click(object sender, EventArgs e)
         {
             p.setAllIn(false);
+            p.isCheck = false;
         }
 
         private void Check_Click(object sender, EventArgs e)
@@ -59,6 +61,7 @@ namespace ChipManager
             bet.Text = BigB.ToString();
             p.setBet(BigB);
             p.setAllIn(false);
+            p.isCheck = true;
         }
 
         private void Clean_Click(object sender, EventArgs e)
@@ -66,6 +69,7 @@ namespace ChipManager
             addB.Text = "Add Bet";
             bet.Text = "";
             p.setAllIn(false);
+            p.isCheck = false;
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -75,6 +79,22 @@ namespace ChipManager
             {
                 if (Int32.Parse(bet.Text) >= BigB && Int32.Parse(bet.Text) < p.getMoney())
                 {
+                    if (Int32.Parse(bet.Text) > BigB)
+                    {
+                        p.isCheck = false;
+                        for (int i = 0; i < GameActivity.p.Count; i++)
+                        {
+                            if (!(GameActivity.p[i].getAllIn()) && !(GameActivity.p[i].getElim()))
+                            {
+                                GameActivity.p[i].isCheck = false;
+                            }
+                        }
+
+                    }
+                    else if (Int32.Parse(bet.Text) == BigB)
+                    {
+                        p.isCheck = true;
+                    }
                     p.setBet(Int32.Parse(bet.Text));
                     p.setMoney(Int32.Parse(bet.Text));
                     GameActivity.turnp = p;
@@ -85,6 +105,7 @@ namespace ChipManager
                 else if (Int32.Parse(bet.Text) == p.getMoney())
                 {
                     p.setAllIn(true);
+                    p.isCheck = true;
                     p.setBet(p.getMoney());
                     p.setMoney(p.getMoney());
                     GameActivity.turnp = p;

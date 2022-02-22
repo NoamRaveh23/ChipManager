@@ -18,7 +18,8 @@ namespace ChipManager
         private int money;
         private int bet;
         private string gender;
-        private bool elim = false , allIn = false , imgcheck = false;
+        private bool elim = false, allIn = false, imgcheck = false;
+        public bool isCheck = false;
         private Bitmap bit;
         public Player(string name, string gender, int money, Bitmap bit)
         {
@@ -29,6 +30,7 @@ namespace ChipManager
             this.elim = false;
             this.bit = bit;
             this.imgcheck = true;
+            this.isCheck = false;
         }
         public Player(string name, string gender, int money)
         {
@@ -38,6 +40,7 @@ namespace ChipManager
             this.gender = gender;
             this.elim = false;
             this.imgcheck = false;
+            this.isCheck = false;
         }
         public Player()
         {
@@ -47,6 +50,7 @@ namespace ChipManager
             this.gender = "boy";
             this.elim = false;
             this.imgcheck = false;
+            this.isCheck = false;
         }
         public string getName()
         {

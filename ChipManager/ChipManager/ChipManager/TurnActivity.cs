@@ -81,7 +81,8 @@ namespace ChipManager
                 {
                     if (Int32.Parse(bet.Text) > BigB)
                     {
-                        p.isCheck = false;
+                        GameActivity.betterLoc = GameActivity.i;
+                        p.isCheck = true;
                         for (int i = 0; i < GameActivity.p.Count; i++)
                         {
                             if (!(GameActivity.p[i].getAllIn()) && !(GameActivity.p[i].getElim()))

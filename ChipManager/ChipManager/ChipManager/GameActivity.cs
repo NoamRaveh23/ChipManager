@@ -20,12 +20,12 @@ namespace ChipManager
         Dialog d; // dialog for choosing the winner
         public static List<Player> p; // clone of lp
         public static Player turnp; // player to play
-        public static int bigBet; // the highest bet yet
+        public static int bigBet, betterLoc; // the highest bet yet    betterLoc --> Location of the beting player in list
         ListView lv; //view the players
         PlayerAdapter adapter;
         public static int counter = 0 , g = 0; //g --> games played
         int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
-        private int i = 0; // position of turnp
+        public static int i = 0; // position of turnp
         Button  ex, play; // play --> play turn   ex --> exit
         TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -136,18 +136,32 @@ namespace ChipManager
             {
                 if (i < lp.Count && counter < 3)
                 {
-                    turnp = p[this.i];
+                    turnp = p[i];
                     t.Text = turnp.getName();
                     //t.Text = turnp.getName();
+                    if (i == betterLoc-1)
+                    {
+                        if (everyoneCheck(p))
+                        {
+                            counter++;
+                        }
+                    }
                     Intent intent = new Intent(this, typeof(TurnActivity));
                     StartActivityForResult(intent, 0);
                 }
                 else if (i >= lp.Count && counter < 3)
                 {
-                    this.i = 0;
+                    i = 0;
                     //counter++;
-                    turnp = p[this.i];
+                    turnp = p[i];
                     t.Text = turnp.getName();
+                    if (i == betterLoc-1)
+                    {
+                        if (everyoneCheck(p))
+                        {
+                            counter++;
+                        }
+                    }
                     Intent intent = new Intent(this, typeof(TurnActivity));
                     StartActivityForResult(intent, 0);
                 }
@@ -158,16 +172,20 @@ namespace ChipManager
             }
             else
             {
-                skip(p, this.i);
+                skip(p, i);
 
                 if (counter >= 3)
                 {
-                    if (adapter != null)
+                    if (everyoneCheck(p))
                     {
-                        adapter.NotifyDataSetChanged();
-                        t.Text = turnp.getName();
+                        if (adapter != null)
+                        {
+                            adapter.NotifyDataSetChanged();
+                            t.Text = turnp.getName();
+                        }
+                        endRound();
                     }
-                    endRound();
+                    
                 }
                 else
                 {
@@ -275,7 +293,7 @@ namespace ChipManager
         {
             for (int i = 0; i< p.Count; i++)
             {
-                if (p[i].isCheck == false)
+                if (!(p[i].isCheck))
                 {
                     return false;
                 }
@@ -308,7 +326,7 @@ namespace ChipManager
             }
             if (requestCode == 0)
             {
-                this.i++;
+                i++;
                 if (turnp.getMoney() == 0 && !turnp.getElim())
                 {
                     turnp.setAllIn(true);

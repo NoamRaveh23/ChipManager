@@ -67,6 +67,8 @@
     <Compile Include="GameActivity.cs" />
     <Compile Include="GameFirebaseActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MyPhoneReceiver.cs" />
+    <Compile Include="MyPhoneStateListener.cs" />
     <Compile Include="OptionsActivity.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerAdapter.cs" />

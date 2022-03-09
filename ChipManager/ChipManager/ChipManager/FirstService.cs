@@ -25,6 +25,7 @@ namespace ChipManager
 
             mp = MediaPlayer.Create(this, Resource.Raw.pokerMusic2MP3);
             mp.Start();
+            mp.Looping = true;
             // Return the correct StartCommandResult for the type of service you are building
             return StartCommandResult.NotSticky;
         }

@@ -22,9 +22,8 @@ namespace ChipManager
         }
         public override void OnReceive(Context context, Intent intent)
         {
-            MyPhoneStateListener phoneStateListener = new MyPhoneStateListener();
-            TelephonyManager telephonyManager =
-            (TelephonyManager)Application.Context.GetSystemService(Context.TelephonyService); telephonyManager.Listen(phoneStateListener, PhoneStateListenerFlags.CallState);
+            //MyPhoneStateListener phoneStateListener = new MyPhoneStateListener(this);
+            //TelephonyManager telephonyManager = (TelephonyManager)Application.Context.GetSystemService(Context.TelephonyService); telephonyManager.Listen(phoneStateListener, PhoneStateListenerFlags.CallState);
         }
     }
 }

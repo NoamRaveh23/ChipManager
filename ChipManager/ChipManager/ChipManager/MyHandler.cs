@@ -24,7 +24,7 @@ namespace ChipManager
         }
         public override void HandleMessage(Message msg)
         {
-            this.tvResult.setStime("" + msg.Arg1);
+            this.tvResult.setSTC("" + msg.Arg1);
         }
     }
 }

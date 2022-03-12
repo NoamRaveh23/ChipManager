@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Telephony;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
@@ -17,7 +18,8 @@ namespace ChipManager
     public class GameActivity : AppCompatActivity
     {
         MyHandler mH;
-        MyTimer mT;
+        public static MyTimer mT;
+        MyPhoneReceiver phone;
         StringTimeCount stc = new StringTimeCount("0");
         private List<Player> lp; // list of players
         EditText et;
@@ -27,16 +29,18 @@ namespace ChipManager
         public static int bigBet, betterLoc; // the highest bet yet    betterLoc --> Location of the beting player in list
         ListView lv; //view the players
         PlayerAdapter adapter;
-        public static int counter = 0 , g = 0; //g --> games played
+        public static int counter = 0 , g = 0 , timeCount = 0; //g --> games played  timeCount --> counting the time
         int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
         public static int i = 0; // position of turnp
         Button  ex, play ; // play --> play turn   ex --> exit  
         public static Button time; //  time  -->  shows the time
-     TextView small, big, t;
+        public static bool stop = false, pause = false; // stop --> checks if timer should stop   pause --> check if timer should pause
+        TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.game);
+            phone = new MyPhoneReceiver();
             lv = (ListView)FindViewById(Resource.Id.lv);
             ex = (Button)FindViewById(Resource.Id.exit);
             play = (Button)FindViewById(Resource.Id.play);
@@ -55,16 +59,68 @@ namespace ChipManager
             small.Text = p[0].getName();
             big.Text = p[1].getName();
             t.Text = p[0].getName();
-            mH = new MyHandler(this, stc);
+            /*mH = new MyHandler(this, stc);
             mT = new MyTimer(mH, 0);
-            mT.Begin();
-            /*ThreadStart threadStart = new ThreadStart(Timer);
+            mT.Begin();*/
+            ThreadStart threadStart = new ThreadStart(Timer);
             Thread th = new Thread(threadStart);
-            th.Start();*/
+            th.Start();
+            MyPhoneStateListener phoneStateListener = new MyPhoneStateListener(this);
+            TelephonyManager telephonyManager = (TelephonyManager)GetSystemService(Context.TelephonyService);
+            telephonyManager.Listen(phoneStateListener, PhoneStateListenerFlags.CallState);
+        }
+        public void UpdateCallState(CallState state, string incomingNumber)
+        {
+            switch (state)
+            {
+                case CallState.Ringing:
+                    pause = true;
+                    break;
+                case CallState.Offhook:
+                    pause = false;
+                    break;
+                case CallState.Idle:
+                    pause = false;
+                    break;
+            }
+        }
+        protected override void OnResume()
+        {
+            RegisterReceiver(phone, new IntentFilter("android.intent.action.PHONE_STATE"));
+            base.OnResume();
+            
+        }
+        protected override void OnPause()
+        {
+            UnregisterReceiver(phone);
+            base.OnPause();
         }
         private void Timer()
         {
-            time.Text = stc.getSTC();
+            while (!stop)
+            {
+                if (!pause)
+                {
+                    timeCount++;
+                    Thread.Sleep(1000);
+                    RunOnUiThread(() =>
+                    {
+                        time.Text = timeString(timeCount);
+                    });
+                    
+                }
+            }
+        }
+
+        private String timeString(int t)
+        {
+            string str = "";
+            int h = 0, m = 0, s = 0; // h --> hours  m --> minutes  s --> seconds
+            h = t / 3600;
+            m = (t % 3600) / 60;
+            s = t % 60;
+            str = h + " : " + m + " : " + s;
+            return str;
         }
         private void Play_Click(object sender, EventArgs e)
         {           
@@ -128,6 +184,10 @@ namespace ChipManager
             counter = 0;
             allMoney = 0;
             bigBet = 0;
+            for (int i = 0; i<p.Count; i++)
+            {
+                p[i].setBet(0);
+            }
             if (g < p.Count)
             {
                 g++;
@@ -140,7 +200,9 @@ namespace ChipManager
         }
         private void Ex_Click(object sender, EventArgs e)
         {
+            pause = true;
             Finish();
+
         }
 
 

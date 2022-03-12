@@ -15,18 +15,18 @@ namespace ChipManager
 {
     public class MyPhoneStateListener : PhoneStateListener
     {
+        private readonly GameActivity _activity;
+
+        public MyPhoneStateListener(GameActivity activity)
+        {
+            _activity = activity; 
+        }
         public override void OnCallStateChanged(CallState state, string incomingNumber)
         {
             base.OnCallStateChanged(state, incomingNumber);
-            switch (state)
-            {
-                case CallState.Ringing:
-                    Toast.MakeText(Application.Context, incomingNumber, ToastLength.Short).Show(); break;
-                case CallState.Offhook:
-                    break;
-                case CallState.Idle:
-                    Toast.MakeText(Application.Context, "idle", ToastLength.Short).Show(); break;
-            }
+            _activity.UpdateCallState(state, incomingNumber);
+
         }
+        
     }
 }

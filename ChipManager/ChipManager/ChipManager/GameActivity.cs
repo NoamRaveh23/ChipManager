@@ -9,12 +9,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace ChipManager
 {
     [Activity(Label = "GameActivity")]
     public class GameActivity : AppCompatActivity
     {
+        MyHandler mH;
+        MyTimer mT;
+        StringTimeCount stc = new StringTimeCount("0");
         private List<Player> lp; // list of players
         EditText et;
         Dialog d; // dialog for choosing the winner
@@ -26,8 +30,9 @@ namespace ChipManager
         public static int counter = 0 , g = 0; //g --> games played
         int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
         public static int i = 0; // position of turnp
-        Button  ex, play; // play --> play turn   ex --> exit
-        TextView small, big, t;
+        Button  ex, play ; // play --> play turn   ex --> exit  
+        public static Button time; //  time  -->  shows the time
+     TextView small, big, t;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -38,6 +43,8 @@ namespace ChipManager
             small = (TextView)FindViewById(Resource.Id.small);
             big = (TextView)FindViewById(Resource.Id.big);
             t = (TextView)FindViewById(Resource.Id.t);
+            time = (Button)FindViewById(Resource.Id.time);
+            time.Text = "0";
             ex.Click += Ex_Click;
             play.Click += Play_Click;
             this.lp = StartGameActivity.lst;
@@ -48,8 +55,17 @@ namespace ChipManager
             small.Text = p[0].getName();
             big.Text = p[1].getName();
             t.Text = p[0].getName();
+            mH = new MyHandler(this, stc);
+            mT = new MyTimer(mH, 0);
+            mT.Begin();
+            /*ThreadStart threadStart = new ThreadStart(Timer);
+            Thread th = new Thread(threadStart);
+            th.Start();*/
         }
-
+        private void Timer()
+        {
+            time.Text = stc.getSTC();
+        }
         private void Play_Click(object sender, EventArgs e)
         {           
             turn();

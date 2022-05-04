@@ -14,10 +14,14 @@ namespace ChipManager
     [Activity(Label = "ProfileActivity")]
     public class ProfileActivity : Activity
     {
+        TextView tvName, tvWin, tvGames;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.profile);
+            tvName = (TextView)FindViewById(Resource.Id.name);
+            tvWin = (TextView)FindViewById(Resource.Id.win);
+            tvGames = (TextView)FindViewById(Resource.Id.games);
             // Create your application here
         }
     }

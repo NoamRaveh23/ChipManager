@@ -94,10 +94,22 @@ namespace ChipManager
                     }
                     else if (Int32.Parse(bet.Text) == BigB)
                     {
-                        p.isCheck = true;
+                        if (p.getBet() < Int32.Parse(bet.Text))
+                        {
+                            p.isCheck = false;
+                        }
+                        else
+                        {
+                            p.isCheck = true;
+                        }
+                        
                     }
                     p.setBet(Int32.Parse(bet.Text));
-                    p.setMoney(Int32.Parse(bet.Text));
+                    if (!p.isCheck)
+                    {
+                        p.setMoney(Int32.Parse(bet.Text));
+                    }
+
                     GameActivity.turnp = p;
                     BigB = Int32.Parse(bet.Text);
                     GameActivity.bigBet = BigB;

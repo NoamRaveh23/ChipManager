@@ -15,17 +15,17 @@ using System.Threading;
 namespace ChipManager
 {
     [Activity(Label = "GameActivity")]
-    public class GameActivity : AppCompatActivity
+     class GameActivity : AppCompatActivity
     {
         MyHandler mH;
         public static MyTimer mT;
         MyPhoneReceiver phone;
         StringTimeCount stc = new StringTimeCount("0");
-        private List<Player> lp; // list of players
+        private List<IPlayer> lp; // list of players
         EditText et;
         Dialog d; // dialog for choosing the winner
-        public static List<Player> p; // clone of lp
-        public static Player turnp; // player to play
+        public static List<IPlayer> p; // clone of lp
+        public static IPlayer turnp; // player to play
         public static int bigBet, betterLoc; // the highest bet yet    betterLoc --> Location of the beting player in list
         ListView lv; //view the players
         PlayerAdapter adapter;
@@ -142,7 +142,7 @@ namespace ChipManager
             {
                 if (!(p[i].getAllIn()) && !(p[i].getElim()))
                 {
-                    p[i].isCheck = false;
+                    p[i].setChecked(false);
                 }
             }
             
@@ -168,6 +168,7 @@ namespace ChipManager
                 }
             }
             p[winner - 1].winMoney(allMoney);
+            p[winner - 1].addBonus();
             restartGame();
             ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
             ISharedPreferencesEditor editor = sp.Edit();
@@ -367,11 +368,11 @@ namespace ChipManager
 
         }
 
-        public static bool everyoneCheck(List<Player> p)
+        public static bool everyoneCheck(List<IPlayer> p)
         {
             for (int i = 0; i< p.Count; i++)
             {
-                if (!(p[i].isCheck))
+                if (!(p[i].getChecked()))
                 {
                     return false;
                 }
@@ -379,7 +380,7 @@ namespace ChipManager
             return true;
         }
 
-        public static void skip(List<Player> p , int i)
+        public static void skip(List<IPlayer> p , int i)
         {
             if (i < p.Count-1)
             {

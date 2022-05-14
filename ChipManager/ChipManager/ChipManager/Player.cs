@@ -12,7 +12,7 @@ using System.Text;
 
 namespace ChipManager
 {
-    public class Player
+    public class Player : IPlayer
     {
         private string name;
         private int money;
@@ -21,19 +21,23 @@ namespace ChipManager
         private bool elim = false, allIn = false, imgcheck = false;
         public bool isCheck = false;
         private Bitmap bit;
+        protected int bonus;
         public Player(string name, string gender, int money, Bitmap bit)
         {
+            IPlayer.type = playerType.Player;
             this.name = name;
             this.money = money;
             this.bet = 0;
             this.gender = gender;
             this.elim = false;
             this.bit = bit;
+            this.bonus = 0;
             this.imgcheck = true;
             this.isCheck = false;
         }
         public Player(string name, string gender, int money)
         {
+            IPlayer.type = playerType.Player;
             this.name = name;
             this.money = money;
             this.bet = 0;
@@ -44,6 +48,7 @@ namespace ChipManager
         }
         public Player()
         {
+            IPlayer.type = playerType.Player;
             this.name = "";
             this.money = 0;
             this.bet = 0;
@@ -52,6 +57,18 @@ namespace ChipManager
             this.imgcheck = false;
             this.isCheck = false;
         }
+
+        public void addBonus()
+        {
+            //ddd
+            bonus += 100;
+        }
+
+        public int getBonus()
+        {
+            return bonus;
+        }
+
         public string getName()
         {
             return this.name;
@@ -118,6 +135,15 @@ namespace ChipManager
         public bool ifPImage()
         {
             return this.imgcheck;
+        }
+        public void setChecked(bool x)
+        {
+            isCheck = x;
+        }
+
+        public bool getChecked()
+        {
+            return this.isCheck;
         }
     }
 

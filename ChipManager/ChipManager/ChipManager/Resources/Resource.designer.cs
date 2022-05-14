@@ -3388,6 +3388,9 @@ namespace ChipManager
 			// aapt resource value: 0x7F070086
 			public const int tooltip_frame_light = 2131165318;
 			
+			// aapt resource value: 0x7F070087
+			public const int vipBack = 2131165319;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -4215,19 +4218,22 @@ namespace ChipManager
 			public const int view_tree_saved_state_registry_owner = 2131230990;
 			
 			// aapt resource value: 0x7F08010F
-			public const int visible = 2131230991;
+			public const int vip = 2131230991;
 			
 			// aapt resource value: 0x7F080110
-			public const int visible_removing_fragment_view_tag = 2131230992;
+			public const int visible = 2131230992;
 			
 			// aapt resource value: 0x7F080111
-			public const int win = 2131230993;
+			public const int visible_removing_fragment_view_tag = 2131230993;
 			
 			// aapt resource value: 0x7F080112
-			public const int withText = 2131230994;
+			public const int win = 2131230994;
 			
 			// aapt resource value: 0x7F080113
-			public const int wrap_content = 2131230995;
+			public const int withText = 2131230995;
+			
+			// aapt resource value: 0x7F080114
+			public const int wrap_content = 2131230996;
 			
 			static Id()
 			{

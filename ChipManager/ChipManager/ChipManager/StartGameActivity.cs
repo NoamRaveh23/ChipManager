@@ -14,12 +14,13 @@ namespace ChipManager
 {
     [Activity(Label = "StartGameActivity")]
 
-    public class StartGameActivity : Activity
+     class StartGameActivity : Activity
     {
-        public static List<Player> lst = new List<Player>();
+        public static List<IPlayer> lst = new List<IPlayer>();
         EditText name , money;
         RadioButton boy , girl;
         Button SaveStart , SaveAdd , photo;
+        CheckBox vip;
         string gender = "";
         public static int counter = 0; // number of players
         Bitmap bit;
@@ -36,6 +37,7 @@ namespace ChipManager
             SaveAdd = (Button)FindViewById(Resource.Id.sna);
             SaveStart = (Button)FindViewById(Resource.Id.sns);
             photo = (Button)FindViewById(Resource.Id.photo);
+            vip = (CheckBox)FindViewById(Resource.Id.vip);
             //lst.Add(new Player("rotem", "girl", 1111));
             SaveAdd.Click += SaveAdd_Click;
             SaveStart.Click += SaveStart_Click;
@@ -100,13 +102,25 @@ namespace ChipManager
 
         public void addPlayer()
         {
+            bool isVIP = false;
             try
             {
                 if (counter < 6)
                 {
+                    if (vip.Checked)
+                    {
+                        isVIP = true;
+                    }
                     if (t)
                     {
-                        lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text),bit));
+                        if (isVIP)
+                        {
+                            lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit));
+                        }
+                        else
+                        {
+                            lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text), bit));
+                        }
                         bit = null;
                         t = false;
                     }

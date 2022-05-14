@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ChipManager
 {
-    public class MyPhoneStateListener : PhoneStateListener
+     class MyPhoneStateListener : PhoneStateListener
     {
         private readonly GameActivity _activity;
 

@@ -11,22 +11,22 @@ using System.Text;
 
 namespace ChipManager
 {
-    class PlayerAdapter : BaseAdapter<Player>
+    class PlayerAdapter : BaseAdapter<IPlayer>
     {
         Context context;
-        List<Player> objects;
+        List<IPlayer> objects;
         
-        public PlayerAdapter(Android.Content.Context context, System.Collections.Generic.List<Player> objects)
+        public PlayerAdapter(Android.Content.Context context, System.Collections.Generic.List<IPlayer> objects)
         {
             this.context = context;
             this.objects = objects;
         }
 
-        public List<Player> GetList()
+        public List<IPlayer> GetList()
         {
             return this.objects;
         }
-        public override Player this[int position]
+        public override IPlayer this[int position]
         {
             get { return this.objects[position]; }
         }
@@ -41,15 +41,19 @@ namespace ChipManager
             return position;
         }
 
+
+
+
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             Android.Views.LayoutInflater layoutInflater = ((GameActivity)context).LayoutInflater;
             Android.Views.View view = layoutInflater.Inflate(Resource.Layout.playerView, parent, false);
+            LinearLayout ll2 = view.FindViewById<LinearLayout>(Resource.Id.ll2);
             ImageView ivGender = view.FindViewById<ImageView>(Resource.Id.iv1);
             TextView tvName = view.FindViewById<TextView>(Resource.Id.tv1);
             TextView tvMoney = view.FindViewById<TextView>(Resource.Id.tv2);
             TextView tvBet = view.FindViewById<TextView>(Resource.Id.tv3);
-            Player temp = objects[position];
+            IPlayer temp = objects[position];
             if (temp != null)
             {
                 if (temp.ifPImage())
@@ -75,6 +79,12 @@ namespace ChipManager
                 tvName.Text = temp.getName();
                 tvMoney.Text = ""+temp.getMoney();
                 tvBet.Text = "" + temp.getBet();
+                if (temp.getType() == playerType.VIPplayer)
+                {
+                    ll2.SetBackgroundDrawable(context.GetDrawable(Resource.Drawable.vipBack));
+                }
+
+                
             }
             return view;
         }

@@ -18,7 +18,7 @@ namespace ChipManager
         Button clean, save;
         RadioButton check, addB, allIn;
         TextView Pname;
-        Player p;
+        IPlayer p;
         int BigB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,13 +47,13 @@ namespace ChipManager
         {
             bet.Text = p.getMoney().ToString();
             p.setAllIn(true);
-            p.isCheck = true;
+            p.setChecked(true);
         }
 
         private void AddB_Click(object sender, EventArgs e)
         {
             p.setAllIn(false);
-            p.isCheck = false;
+            p.setChecked(false);
         }
 
         private void Check_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace ChipManager
             bet.Text = BigB.ToString();
             p.setBet(BigB);
             p.setAllIn(false);
-            p.isCheck = true;
+            p.setChecked(true);
         }
 
         private void Clean_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace ChipManager
             addB.Text = "Add Bet";
             bet.Text = "";
             p.setAllIn(false);
-            p.isCheck = false;
+            p.setChecked(false);
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -82,12 +82,12 @@ namespace ChipManager
                     if (Int32.Parse(bet.Text) > BigB)
                     {
                         GameActivity.betterLoc = GameActivity.i;
-                        p.isCheck = true;
+                        p.setChecked(true);
                         for (int i = 0; i < GameActivity.p.Count; i++)
                         {
                             if (!(GameActivity.p[i].getAllIn()) && !(GameActivity.p[i].getElim()))
                             {
-                                GameActivity.p[i].isCheck = false;
+                                GameActivity.p[i].setChecked(false);
                             }
                         }
 
@@ -96,16 +96,16 @@ namespace ChipManager
                     {
                         if (p.getBet() < Int32.Parse(bet.Text))
                         {
-                            p.isCheck = false;
+                            p.setChecked(false);
                         }
                         else
                         {
-                            p.isCheck = true;
+                            p.setChecked(true);
                         }
                         
                     }
                     p.setBet(Int32.Parse(bet.Text));
-                    if (!p.isCheck)
+                    if (!p.getChecked())
                     {
                         p.setMoney(Int32.Parse(bet.Text));
                     }
@@ -118,7 +118,7 @@ namespace ChipManager
                 else if (Int32.Parse(bet.Text) == p.getMoney())
                 {
                     p.setAllIn(true);
-                    p.isCheck = true;
+                    p.setChecked(true);
                     p.setBet(p.getMoney());
                     p.setMoney(p.getMoney());
                     GameActivity.turnp = p;

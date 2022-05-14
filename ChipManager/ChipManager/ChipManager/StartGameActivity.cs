@@ -107,7 +107,7 @@ namespace ChipManager
             {
                 if (counter < 6)
                 {
-                    if (vip.Checked)
+                    if (vip.Checked == true)
                     {
                         isVIP = true;
                     }
@@ -116,22 +116,43 @@ namespace ChipManager
                         if (isVIP)
                         {
                             lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit));
+                            Console.Write("vip");
                         }
                         else
                         {
                             lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text), bit));
+                            Console.Write("regular");
                         }
                         bit = null;
                         t = false;
                     }
                     else
                     {
-                        lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));
+                        if (isVIP)
+                        {
+
+/*                            VIPplayer vipp = new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit);
+
+                            Player pp = new Player(name.Text, gender, Int32.Parse(money.Text), bit);
+
+                            playerType pt1 = vipp.getType();
+                            playerType pt2 = pp.getType();
+
+*/                            //playerType t = vipp.getType();
+                            lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit));
+                            //Console.Write("vip");
+                        }
+                        else
+                        {
+                            lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text), bit));
+                            //Console.Write("regular");
+                        }
                     }
                     
                     Toast.MakeText(this, "Player added!", ToastLength.Short).Show();
                     name.Text = "";
                     money.Text = "";
+                    vip.Checked = false;
                     counter++;
                 }
                 else

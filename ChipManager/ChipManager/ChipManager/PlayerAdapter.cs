@@ -79,9 +79,15 @@ namespace ChipManager
                 tvName.Text = temp.getName();
                 tvMoney.Text = ""+temp.getMoney();
                 tvBet.Text = "" + temp.getBet();
-                if (temp.getType() == playerType.VIPplayer)
+
+
+                playerType t = temp.getType();
+
+
+                if (t == playerType.VIPplayer)
                 {
                     ll2.SetBackgroundDrawable(context.GetDrawable(Resource.Drawable.vipBack));
+                    Console.WriteLine("vip");
                 }
 
                 

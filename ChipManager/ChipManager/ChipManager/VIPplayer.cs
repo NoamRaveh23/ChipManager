@@ -17,7 +17,7 @@ namespace ChipManager
     {
         public VIPplayer(string name, string gender, int money, Bitmap bit) : base(name, gender, money, bit) 
         {
-            IPlayer.type = playerType.VIPplayer;
+            type = playerType.VIPplayer;
         }
         
         public void addBonus()

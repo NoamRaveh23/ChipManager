@@ -23,11 +23,8 @@ namespace ChipManager
 
     interface IPlayer
     {
-        static protected playerType type = playerType.IPlayer;
-        public playerType getType()
-        {
-            return type;
-        }
+        public playerType getType();
+        
         public abstract void addBonus();
         public abstract int getBonus();
         public string getName();

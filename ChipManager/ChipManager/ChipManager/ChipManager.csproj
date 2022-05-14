@@ -67,7 +67,6 @@
     <Compile Include="FirstService.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameActivity.cs" />
-    <Compile Include="GameFirebaseActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyHandler.cs" />
     <Compile Include="MyPhoneReceiver.cs" />
@@ -81,7 +80,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartGameActivity.cs" />
-    <Compile Include="StartGameFirebaseActivity.cs" />
     <Compile Include="StringTimeCount.cs" />
     <Compile Include="TurnActivity.cs" />
     <Compile Include="VIPplayer.cs" />

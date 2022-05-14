@@ -12,7 +12,7 @@ using System.Text;
 
 namespace ChipManager
 {
-    public class Player : IPlayer
+    class Player : IPlayer
     {
         private string name;
         private int money;
@@ -22,9 +22,10 @@ namespace ChipManager
         public bool isCheck = false;
         private Bitmap bit;
         protected int bonus;
+        protected playerType type;
         public Player(string name, string gender, int money, Bitmap bit)
         {
-            IPlayer.type = playerType.Player;
+            type = playerType.Player;
             this.name = name;
             this.money = money;
             this.bet = 0;
@@ -37,7 +38,7 @@ namespace ChipManager
         }
         public Player(string name, string gender, int money)
         {
-            IPlayer.type = playerType.Player;
+            type = playerType.Player;
             this.name = name;
             this.money = money;
             this.bet = 0;
@@ -48,7 +49,7 @@ namespace ChipManager
         }
         public Player()
         {
-            IPlayer.type = playerType.Player;
+            type = playerType.Player;
             this.name = "";
             this.money = 0;
             this.bet = 0;
@@ -57,6 +58,12 @@ namespace ChipManager
             this.imgcheck = false;
             this.isCheck = false;
         }
+
+        public playerType getType()
+        {
+            return type;
+        }
+
 
         public void addBonus()
         {

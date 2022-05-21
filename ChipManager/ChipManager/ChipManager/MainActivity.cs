@@ -11,8 +11,9 @@ namespace ChipManager
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button newGame , conGame, options, profile;
+        Button newGame , conGame, options, profile , rules;
         TextView lstw;
+        public bool isgame = false; //is active game
         //MediaPlayer mp;
         //AudioManager am;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -25,11 +26,11 @@ namespace ChipManager
             newGame = (Button)FindViewById(Resource.Id.newGame);
             conGame = (Button)FindViewById(Resource.Id.ConGame);
             options = (Button)FindViewById(Resource.Id.options);
-            profile = (Button)FindViewById(Resource.Id.profile);
+            rules = (Button)FindViewById(Resource.Id.rule);
+            rules.Click += Rules_Click;
             newGame.Click += NewGame_Click;
             conGame.Click += ConGame_Click;
             options.Click += Options_Click;
-            profile.Click += Profile_Click;
             Intent intent = new Intent(this, typeof(FirstService));
             StartService(intent);
             ISharedPreferences sp = GetSharedPreferences("lastWin", FileCreationMode.Private);
@@ -41,12 +42,12 @@ namespace ChipManager
             am.SetStreamVolume(Stream.Music, max / 2, 0);*/
         }
 
-        private void Profile_Click(object sender, System.EventArgs e)
+        private void Rules_Click(object sender, System.EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(ProfileActivity));
+            Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("https://playpoker.co.il/%D7%A4%D7%95%D7%A7%D7%A8-%D7%97%D7%95%D7%A7%D7%99%D7%9D/"));
             StartActivity(intent);
         }
-
+        
         private void Options_Click(object sender, System.EventArgs e)
         {
             Intent intent = new Intent(this, typeof(OptionsActivity));
@@ -55,12 +56,22 @@ namespace ChipManager
 
         private void ConGame_Click(object sender, System.EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(GameActivity));
-            StartActivity(intent);
+            if (isgame)
+            {
+                Intent intent = new Intent(this, typeof(GameActivity));
+                StartActivity(intent);
+            }
+            else
+            {
+                isgame = true;
+                Intent intent = new Intent(this, typeof(StartGameActivity));
+                StartActivity(intent);
+            }
         }
 
         private void NewGame_Click(object sender, System.EventArgs e)
         {
+            isgame = true;
             Intent intent = new Intent(this, typeof(StartGameActivity));
             StartActivity(intent);
         }

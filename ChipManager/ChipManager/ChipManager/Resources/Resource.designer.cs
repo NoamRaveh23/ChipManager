@@ -3915,46 +3915,46 @@ namespace ChipManager
 			public const int pname = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int profile = 2131230892;
+			public const int progress_circular = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int progress_circular = 2131230893;
+			public const int progress_horizontal = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int progress_horizontal = 2131230894;
+			public const int quit = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int quit = 2131230895;
+			public const int radio = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int radio = 2131230896;
+			public const int radio_All = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int radio_All = 2131230897;
+			public const int radio_Bet = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int radio_Bet = 2131230898;
+			public const int radio_check = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int radio_check = 2131230899;
+			public const int radio_female = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int radio_female = 2131230900;
+			public const int radio_male = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int radio_male = 2131230901;
+			public const int resume = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int resume = 2131230902;
+			public const int right = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int right = 2131230903;
+			public const int right_icon = 2131230903;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int right_icon = 2131230904;
+			public const int right_side = 2131230904;
 			
 			// aapt resource value: 0x7F0800B9
-			public const int right_side = 2131230905;
+			public const int rule = 2131230905;
 			
 			// aapt resource value: 0x7F0800BA
 			public const int s = 2131230906;

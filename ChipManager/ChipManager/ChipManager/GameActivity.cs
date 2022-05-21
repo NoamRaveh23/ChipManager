@@ -26,7 +26,7 @@ namespace ChipManager
         Dialog d; // dialog for choosing the winner
         public static List<IPlayer> p; // clone of lp
         public static IPlayer turnp; // player to play
-        public static int bigBet, betterLoc; // the highest bet yet    betterLoc --> Location of the beting player in list
+        public static int bigBet, betterLoc, timerSave; // the highest bet yet    betterLoc --> Location of the beting player in list  timerSave --> saves the timer value
         ListView lv; //view the players
         PlayerAdapter adapter;
         public static int counter = 0 , g = 0 , timeCount = 0; //g --> games played  timeCount --> counting the time
@@ -35,7 +35,9 @@ namespace ChipManager
         Button  ex, play ; // play --> play turn   ex --> exit  
         public static Button time; //  time  -->  shows the time
         public static bool stop = false, pause = false; // stop --> checks if timer should stop   pause --> check if timer should pause
+        private static bool timerCreated = false;
         TextView small, big, t;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -62,9 +64,18 @@ namespace ChipManager
             /*mH = new MyHandler(this, stc);
             mT = new MyTimer(mH, 0);
             mT.Begin();*/
-            ThreadStart threadStart = new ThreadStart(Timer);
-            Thread th = new Thread(threadStart);
-            th.Start();
+            if (!timerCreated) // threadStart != null
+            {
+                ThreadStart threadStart = new ThreadStart(Timer);
+                Thread th;
+                th = new Thread(threadStart);
+                th.Start();
+                timerCreated = true; // remove
+            }
+            else
+            {
+                pause = false;
+            }
             MyPhoneStateListener phoneStateListener = new MyPhoneStateListener(this);
             TelephonyManager telephonyManager = (TelephonyManager)GetSystemService(Context.TelephonyService);
             telephonyManager.Listen(phoneStateListener, PhoneStateListenerFlags.CallState);
@@ -99,6 +110,11 @@ namespace ChipManager
         {
             while (!stop)
             {
+                /*if (timerSave != 0)
+                {
+                    timeCount = timerSave;
+                    timerSave = 0;
+                }*/
                 if (!pause)
                 {
                     timeCount++;
@@ -201,7 +217,8 @@ namespace ChipManager
         }
         private void Ex_Click(object sender, EventArgs e)
         {
-            pause = true;
+            timerSave = timeCount;
+            pause = true;           
             Finish();
 
         }

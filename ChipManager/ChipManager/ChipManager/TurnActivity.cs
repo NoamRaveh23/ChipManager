@@ -94,7 +94,7 @@ namespace ChipManager
                     }
                     else if (Int32.Parse(bet.Text) == BigB)
                     {
-                        if (p.getBet() < Int32.Parse(bet.Text))
+                        if (p.getBet() <= Int32.Parse(bet.Text))
                         {
                             p.setChecked(false);
                         }

@@ -16,7 +16,7 @@ namespace ChipManager
 
      class StartGameActivity : Activity
     {
-        public static List<IPlayer> lst = new List<IPlayer>();
+        public static List<IPlayer> lst;
         EditText name , money;
         RadioButton boy , girl;
         Button SaveStart , SaveAdd , photo;
@@ -38,12 +38,12 @@ namespace ChipManager
             SaveStart = (Button)FindViewById(Resource.Id.sns);
             photo = (Button)FindViewById(Resource.Id.photo);
             vip = (CheckBox)FindViewById(Resource.Id.vip);
-            //lst.Add(new Player("rotem", "girl", 1111));
             SaveAdd.Click += SaveAdd_Click;
             SaveStart.Click += SaveStart_Click;
             boy.Click += Boy_Click;
             girl.Click += Girl_Click;
             photo.Click += Photo_Click;
+            lst = new List<IPlayer>();
         }
 
         private void Photo_Click(object sender, EventArgs e)
@@ -63,6 +63,10 @@ namespace ChipManager
                     t = true;
                 }
             }
+            else if (requestCode == 3)
+            {
+                    Finish();
+            }
         }
                 
 
@@ -80,7 +84,7 @@ namespace ChipManager
         {
             addPlayer();
             Intent intent = new Intent(this, typeof(GameActivity));
-            StartActivity(intent);
+            StartActivityForResult(intent, 3);
         }
 
         private void SaveAdd_Click(object sender, EventArgs e)
@@ -94,7 +98,7 @@ namespace ChipManager
                 addPlayer();
                 Toast.MakeText(this, "You can add only 6 players", ToastLength.Short).Show();
                 Intent intent = new Intent(this, typeof(GameActivity));
-                StartActivity(intent);
+                StartActivityForResult(intent, 3);
             }
 
             
@@ -116,12 +120,12 @@ namespace ChipManager
                         if (isVIP)
                         {
                             lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit));
-                            Console.Write("vip");
+                            
                         }
                         else
                         {
                             lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text), bit));
-                            Console.Write("regular");
+                            
                         }
                         bit = null;
                         t = false;
@@ -130,22 +134,11 @@ namespace ChipManager
                     {
                         if (isVIP)
                         {
-
-/*                            VIPplayer vipp = new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit);
-
-                            Player pp = new Player(name.Text, gender, Int32.Parse(money.Text), bit);
-
-                            playerType pt1 = vipp.getType();
-                            playerType pt2 = pp.getType();
-
-*/                            //playerType t = vipp.getType();
-                            lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text), bit));
-                            //Console.Write("vip");
+                            lst.Add(new VIPplayer(name.Text, gender, Int32.Parse(money.Text)));
                         }
                         else
                         {
-                            lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text), bit));
-                            //Console.Write("regular");
+                            lst.Add(new Player(name.Text, gender, Int32.Parse(money.Text)));
                         }
                     }
                     

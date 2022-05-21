@@ -19,7 +19,10 @@ namespace ChipManager
         {
             type = playerType.VIPplayer;
         }
-        
+        public VIPplayer(string name, string gender, int money)
+        {
+            type = playerType.VIPplayer;
+        }
         public void addBonus()
         {
             bonus += 200;

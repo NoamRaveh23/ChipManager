@@ -53,11 +53,11 @@
         
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/profile"
+            android:id="@+id/rule"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Profile"
+            android:text=" Rules"
             android:layout_margin="25dp"
             android:background="@drawable/rounded_corner"
             android:typeface="serif"

@@ -87,7 +87,6 @@ namespace ChipManager
                 if (t == playerType.VIPplayer)
                 {
                     ll2.SetBackgroundDrawable(context.GetDrawable(Resource.Drawable.vipBack));
-                    Console.WriteLine("vip");
                 }
 
                 

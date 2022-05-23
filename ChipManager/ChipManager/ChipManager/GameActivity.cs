@@ -32,7 +32,7 @@ namespace ChipManager
         public static int counter = 0 , g = 0 , timeCount = 0; //g --> games played  timeCount --> counting the time
         int allMoney = 0 , pcount = 1; // allMOney --> the pot of the game so far
         public static int i = 0; // position of turnp
-        Button  ex, play ; // play --> play turn   ex --> exit  
+        Button  ex, play, endRoundButton; // play --> play turn   ex --> exit  endRound --> ends the round
         public static Button time; //  time  -->  shows the time
         public static bool stop = false, pause = false; // stop --> checks if timer should stop   pause --> check if timer should pause
         private static bool timerCreated = false;
@@ -50,9 +50,11 @@ namespace ChipManager
             big = (TextView)FindViewById(Resource.Id.big);
             t = (TextView)FindViewById(Resource.Id.t);
             time = (Button)FindViewById(Resource.Id.time);
+            endRoundButton = (Button)FindViewById(Resource.Id.end);
             time.Text = "0";
             ex.Click += Ex_Click;
             play.Click += Play_Click;
+            endRoundButton.Click += EndRoundButton_Click;
             this.lp = StartGameActivity.lst;
             p = this.lp;
             turnp = p[0];
@@ -80,6 +82,12 @@ namespace ChipManager
             TelephonyManager telephonyManager = (TelephonyManager)GetSystemService(Context.TelephonyService);
             telephonyManager.Listen(phoneStateListener, PhoneStateListenerFlags.CallState);
         }
+
+        private void EndRoundButton_Click(object sender, EventArgs e)
+        {
+            endRound();     
+        }
+
         public void UpdateCallState(CallState state, string incomingNumber)
         {
             switch (state)
@@ -204,7 +212,9 @@ namespace ChipManager
             for (int i = 0; i<p.Count; i++)
             {
                 p[i].setBet(0);
+                
             }
+            adapter.NotifyDataSetChanged();
             if (g < p.Count)
             {
                 g++;
@@ -213,7 +223,12 @@ namespace ChipManager
             {
                 g = 0;
             }
-            turnp = p[g];
+            try
+            { turnp = p[g]; }
+            catch
+            { turnp = p[0]; }
+            
+
         }
         private void Ex_Click(object sender, EventArgs e)
         {

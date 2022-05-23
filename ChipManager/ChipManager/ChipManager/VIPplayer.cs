@@ -19,7 +19,7 @@ namespace ChipManager
         {
             type = playerType.VIPplayer;
         }
-        public VIPplayer(string name, string gender, int money)
+        public VIPplayer(string name, string gender, int money) : base(name, gender, money)
         {
             type = playerType.VIPplayer;
         }

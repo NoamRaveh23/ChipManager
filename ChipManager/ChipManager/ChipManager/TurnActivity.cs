@@ -53,7 +53,7 @@ namespace ChipManager
         private void AddB_Click(object sender, EventArgs e)
         {
             p.setAllIn(false);
-            p.setChecked(false);
+            p.setChecked(true);
         }
 
         private void Check_Click(object sender, EventArgs e)

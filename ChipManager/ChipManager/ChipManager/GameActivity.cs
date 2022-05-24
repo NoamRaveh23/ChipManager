@@ -17,6 +17,7 @@ namespace ChipManager
     [Activity(Label = "GameActivity")]
      class GameActivity : AppCompatActivity
     {
+        //MyPhoneReceiver USB;
         MyHandler mH;
         public static MyTimer mT;
         MyPhoneReceiver phone;
@@ -105,7 +106,9 @@ namespace ChipManager
         }
         protected override void OnResume()
         {
-            RegisterReceiver(phone, new IntentFilter("android.intent.action.PHONE_STATE"));
+            //RegisterReceiver(phone, new IntentFilter("android.intent.action.PHONE_STATE"));
+            RegisterReceiver(phone, new IntentFilter("android.intent.action.ACTION_POWER_CONNECTED"));
+            RegisterReceiver(phone, new IntentFilter("android.intent.action.ACTION_POWER_DISCONNECTED"));
             base.OnResume();
             
         }
